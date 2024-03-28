@@ -45,7 +45,7 @@ function getRandomTimeSlot() {
 }
 
 function createMockSchedule(numItems: number): ScheduleItem[] {
-  const mockData = [];
+  const mockData: ScheduleItem[] = [];
   const workerNames = ["Alex", "Sam", "Jordan", "Taylor"];
   const clientNames = ["Client A", "Client B", "Client C", "Client D"];
 
