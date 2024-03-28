@@ -10,6 +10,7 @@ import Homepage from "./components/Homepage";
 import SchedulePage from "./components/SchedulePage";
 import Logoff from "./components/Logoff";
 import TaskPage from "./components/TaskPage";
+import React from "react";
 
 function App() {
   return (

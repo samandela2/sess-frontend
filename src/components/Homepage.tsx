@@ -1,4 +1,7 @@
 // Import any other components you need
+import React from "react";
+import Navbar from "./Navbar";
+import { useAuth } from "../contexts/AuthContext";
 
 const Homepage = () => {
   // Replace with actual logic for fetching and displaying user info and schedules
