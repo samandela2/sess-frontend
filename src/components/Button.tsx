@@ -1,16 +1,23 @@
 import React from "react";
+import BootstrapButton from "react-bootstrap/Button";
+import "./styles.css"; // Import your CSS file
+
+// ...
+
+<BootstrapButton className="btn-black">Button</BootstrapButton>;
 
 interface Props {
   children: string;
-  color: string;
   onClick: () => void;
+  variant: string;
+  color: string; // This will be the name of your CSS class
 }
 
-const Button = ({ children, onClick, color }: Props) => {
+const Button = ({ children, onClick, variant, color }: Props) => {
   return (
-    <button className={"btn btn-" + color} onClick={onClick}>
+    <BootstrapButton variant={variant} onClick={onClick} className={color}>
       {children}
-    </button>
+    </BootstrapButton>
   );
 };
 

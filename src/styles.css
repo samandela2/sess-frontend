@@ -1,0 +1,9 @@
+.btn-black {
+  color: black; /* Ensures text color is black */
+  border-color: black; /* Ensures border color is black */
+}
+
+.btn-black:hover {
+  color: white; /* Ensures text color is white on hover */
+  background-color: black; /* Ensures background color is black on hover */
+}

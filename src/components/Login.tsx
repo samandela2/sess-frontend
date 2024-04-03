@@ -1,7 +1,8 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import React from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import "../Login.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -23,10 +24,17 @@ function Login() {
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh", backgroundColor: "#f7f7f7" }}
+    <Container
+      className="d-flex flex-column justify-content-center align-items-center"
+      style={{ height: "100vh", backgroundColor: "#f0f0f0" }}
     >
+      <div className="text-center mb-4">
+        <h1 className="login-title">SESS</h1>{" "}
+        {/* Custom class for styling the title */}
+        <p className="login-message">Welcome to SESS</p>{" "}
+        {/* Custom class for the message */}
+      </div>
+
       <div
         style={{
           width: "320px",
@@ -36,45 +44,31 @@ function Login() {
           borderRadius: "5px",
         }}
       >
-        <h1
-          className="text-center"
-          style={{ fontWeight: "bold", color: "#000", marginBottom: "24px" }}
-        >
-          SESS
-        </h1>
-        <p className="text-center" style={{ marginBottom: "24px" }}>
-          Welcome to SESS
-        </p>
-
-        <form onSubmit={handleLogin}>
-          <div className="mb-3">
-            <input
+        <Form onSubmit={handleLogin}>
+          <Form.Group>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
               type="text"
-              className="form-control"
-              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
-          <div className="mb-3">
-            <input
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
-              className="form-control"
-              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
-          <div className="d-grid gap-2">
-            <button type="submit" className="btn btn-primary">
-              Sign in
-            </button>
-          </div>
-          {/* Rest of your form elements */}
-        </form>
-        {/* Other UI elements like 'Forgot password?' and 'Get started' links */}
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
       </div>
-    </div>
+    </Container>
   );
 }
 

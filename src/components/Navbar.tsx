@@ -1,83 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
-const Navbar = () => {
+const NavigationBar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark"
-      style={{ backgroundColor: "#2E2E6A" }}
-    >
-      <div className="container-fluid">
-        <span
-          className="navbar-brand mb-0 h1"
-          style={{ fontSize: "24px", position: "absolute", top: "10px" }}
-        >
-          SESS
-        </span>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar.Brand>SESS</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse
+        id="basic-navbar-nav"
+        className="justify-content-between"
+      >
+        <Nav>
+          <LinkContainer to="/home">
+            <Nav.Link>Home</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/profile">
+            <Nav.Link>Profile</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/schedule">
+            <Nav.Link>Schedule</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/client-search">
+            <Nav.Link>Client Search</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/client-details">
+            <Nav.Link>Client Details</Nav.Link>
+          </LinkContainer>
+        </Nav>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse"
-          id="navbarNav"
-          style={{ marginTop: "50px" }}
-        >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link" to="/home">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/profile">
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/schedule">
-                Schedule
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/client-search">
-                Client Search
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/client-detail">
-                Client Detail
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/task-page">
-                Tasks
-              </Link>
-            </li>
-
-            {/* Navigation links */}
-          </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/logoff">
-                Logoff
-              </Link>
-            </li>
-
-            {/* Right-aligned links, like Logoff */}
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <Nav>
+          <LinkContainer to="/logoff">
+            <Nav.Link>Logoff</Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavigationBar;

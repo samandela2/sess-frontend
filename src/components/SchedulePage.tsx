@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 type ScheduleItem = {
   id: string;
@@ -95,6 +96,13 @@ const SchedulePage = () => {
   return (
     <div>
       <h1>Schedule</h1>
+      <Link className="btn btn-outline-primary btn-black" to="/client-details">
+        Client Details
+      </Link>
+
+      <Link className="btn btn-outline-primary btn-black" to="/new-appointment">
+        New Appointment
+      </Link>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>

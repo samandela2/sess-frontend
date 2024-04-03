@@ -9,8 +9,8 @@ import Login from "./components/Login";
 import Homepage from "./components/Homepage";
 import SchedulePage from "./components/SchedulePage";
 import Logoff from "./components/Logoff";
-import TaskPage from "./components/TaskPage";
 import React from "react";
+import ClientDetailPage from "./components/ClientDetailPage";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Homepage />} />
           <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="/task-page" element={<TaskPage />} />
+          <Route path="/client-details" element={<ClientDetailPage />} />
           <Route path="/logoff" element={<Logoff />} />
 
           <Route path="/" element={<Navigate replace to="/login" />} />

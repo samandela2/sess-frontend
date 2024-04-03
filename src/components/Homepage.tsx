@@ -1,7 +1,6 @@
 // Import any other components you need
 import React from "react";
-import Navbar from "./Navbar";
-import { useAuth } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   // Replace with actual logic for fetching and displaying user info and schedules
@@ -33,7 +32,12 @@ const Homepage = () => {
       <section>
         <h2>Actions</h2>
         {/* Replace with actual action buttons */}
-        <button>Modify Appointment</button>
+        <Link
+          className="btn btn-outline-primary btn-black"
+          to="/modify-appointment"
+        >
+          Modify Appointment
+        </Link>
       </section>
 
       {userInfo.role === "Admin" && (
