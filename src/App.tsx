@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Homepage from "./components/Homepage";
 import SchedulePage from "./components/SchedulePage";
+import ClientSearchPage from "./components/ClientSearchPage";
 import Logoff from "./components/Logoff";
 import React from "react";
 import ClientDetailPage from "./components/ClientDetailPage";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Homepage />} />
           <Route path="/schedule" element={<SchedulePage />} />
+          <Route path="/client-search" element={<ClientSearchPage />} />
           <Route path="/client-details" element={<ClientDetailPage />} />
           <Route path="/logoff" element={<Logoff />} />
 
