@@ -1,6 +1,6 @@
 import React from "react";
 import BootstrapButton from "react-bootstrap/Button";
-import "./styles.css"; // Import your CSS file
+// Import your CSS file
 
 // ...
 

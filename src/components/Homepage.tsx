@@ -1,6 +1,5 @@
-// Import any other components you need
-import React from "react";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Homepage = () => {
   // Replace with actual logic for fetching and displaying user info and schedules
@@ -32,12 +31,9 @@ const Homepage = () => {
       <section>
         <h2>Actions</h2>
         {/* Replace with actual action buttons */}
-        <Link
-          className="btn btn-outline-primary btn-black"
-          to="/modify-appointment"
-        >
-          Modify Appointment
-        </Link>
+        <LinkContainer to="/modify-appointment">
+          <Button variant="primary">Modify Appointment</Button>
+        </LinkContainer>
       </section>
 
       {userInfo.role === "Admin" && (

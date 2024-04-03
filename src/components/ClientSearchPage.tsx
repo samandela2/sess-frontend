@@ -7,9 +7,27 @@ const ClientSearchPage = () => {
   const [clientId, setClientId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  // Pseudo function to simulate an API call
+  const searchClients = async (searchParams: {
+    firstName: string;
+    lastName: string;
+    clientId: string;
+    phoneNumber: string;
+  }) => {
+    // This would be replaced with your actual API call
+    console.log("Searching with these params:", searchParams);
+    return []; // This would be replaced with the actual search results
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle the form submission here
+    const searchParams = { firstName, lastName, clientId, phoneNumber };
+    try {
+      const results = await searchClients(searchParams);
+      // handle your search results here
+    } catch (error) {
+      // handle any errors here
+    }
   };
 
   return (
