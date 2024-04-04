@@ -97,7 +97,7 @@ const SchedulePage = () => {
   return (
     <div>
       <h1>Schedule</h1>
-      <LinkContainer to="/client-details">
+      <LinkContainer to="/client-details" style={{ marginRight: "5px" }}>
         <Button variant="primary">Client Details</Button>
       </LinkContainer>
 

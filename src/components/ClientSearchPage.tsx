@@ -72,7 +72,7 @@ const ClientSearchPage = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" style={{ marginTop: "10px" }}>
         Search
       </Button>
     </Form>
