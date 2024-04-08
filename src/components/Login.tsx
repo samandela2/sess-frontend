@@ -20,6 +20,8 @@ function Login() {
       navigate("/home"); // Redirect to the Homepage on successful login
     } else {
       console.log("Invalid credentials");
+   
+      
     }
   };
 
