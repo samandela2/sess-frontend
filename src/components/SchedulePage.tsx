@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
 
 type ScheduleItem = {
   id: string;
@@ -96,13 +97,13 @@ const SchedulePage = () => {
   return (
     <div>
       <h1>Schedule</h1>
-      <Link className="btn btn-outline-primary btn-black" to="/client-details">
-        Client Details
-      </Link>
+      <LinkContainer to="/client-details" style={{ marginRight: "5px" }}>
+        <Button variant="primary">Client Details</Button>
+      </LinkContainer>
 
-      <Link className="btn btn-outline-primary btn-black" to="/new-appointment">
-        New Appointment
-      </Link>
+      <LinkContainer to="/new-appointment">
+        <Button variant="primary">New Appointment</Button>
+      </LinkContainer>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>

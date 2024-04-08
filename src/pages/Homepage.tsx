@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import User, { UserProps } from "../components/User";
 import TaskBasic, { TaskBasicProps } from "../components/TaskBasic";
 
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
+
 /**
  * TODO:
  * Home:
