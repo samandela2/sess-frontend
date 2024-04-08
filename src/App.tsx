@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
-import Homepage from "./components/Homepage";
+import Homepage from "./pages/Homepage";
 import SchedulePage from "./components/SchedulePage";
-import ClientSearchPage from "./components/ClientSearchPage";
+import ClientSearchPage from "./pages/ClientSearchPage";
 import Logoff from "./components/Logoff";
 import React from "react";
 import ClientDetailPage from "./components/ClientDetailPage";
@@ -24,7 +24,6 @@ function App() {
           <Route path="/client-search" element={<ClientSearchPage />} />
           <Route path="/client-details" element={<ClientDetailPage />} />
           <Route path="/logoff" element={<Logoff />} />
-
           <Route path="/" element={<Navigate replace to="/login" />} />
         </Routes>
       </Layout>
