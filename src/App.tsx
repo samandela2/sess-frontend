@@ -7,6 +7,7 @@ import {
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Homepage from "./pages/Homepage";
+import Profilepage from "./pages/Profilepage";
 import SchedulePage from "./components/SchedulePage";
 import ClientSearchPage from "./pages/ClientSearchPage";
 import Logoff from "./components/Logoff";
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Homepage />} />
+          <Route path="/profile" element={<Profilepage />} />
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/client-search" element={<ClientSearchPage />} />
           <Route path="/client-details" element={<ClientDetailPage />} />
