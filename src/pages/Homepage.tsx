@@ -45,28 +45,27 @@ const Homepage = () => {
         </ul>
       </section>
 
-      <section>
-        <h2>Actions</h2>
-        {user.length > 0 && user[0].role === "ADMIN" && (
-          <Link
-            className="btn btn-outline-primary btn-black"
-            to="/modify-appointment"
-          >
-            Create Appointment
-          </Link>
-        )}
-      </section>
-
       {user.length > 0 && user[0].role === "ADMIN" && (
         <section>
-          <h2>Client (admin only)</h2>
-          {/* Replace with actual client search functionality */}
-          <input type="search" placeholder="Search client" />
-          <Link
-            className="btn btn-outline-primary btn-black"
-            to="/client-search"
-          >
-            Search
+          <h2>Actions</h2>
+          <div className="input-group mb-3 custom-search-group">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Search client (Admin)"
+              aria-label="Search client"
+            />
+            <Link
+              to="/client-search"
+              className="btn btn-outline-secondary"
+              type="button"
+            >
+              Search
+            </Link>
+          </div>
+
+          <Link to="/appointment-slot" className="btn btn-primary my-2">
+            Create Appointment
           </Link>
         </section>
       )}
