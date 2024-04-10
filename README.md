@@ -5,29 +5,29 @@ With support from: **Bootstrap**, **Vite**
 
 
 ### Todo
-* Login: Authorization, Authentication  
+* Login, Logout : Authorization, Authentication
+  
 * Home: 
-  - [x] Profile: Read **Name**,**Role** 
-  - [x] Schedule: Read **first 2** tasks with onClick navigation
-  - [x] Actions: **Create Appointment(admin)**
-- [ ]Client Search:
-* - [x] Profile: Show **Name,id,role**
-- [ ]Schedule: onClick navigation
-- [ ]Client detail: Show following:
-  * First Name
-  * Last Name
-  * Phone Number
-  * Gender
-  * id
-  * address
-  * documentation URL
-- [ ]Task detail: show following:
-  * id
-  * Start time
-  * End time
-  * location
-  * type
-  * client id
-  * owenr id
-  * comment
-    
+  - [ ] Schedule: Read **first 2** tasks from most recent time current user   
+  - [ ] Actions: 
+    **Create Appointment(admin)**
+    **Search client(admin)**
+    **Check Schedule (both)**
+
+* Profile:  __change email, password(maybe later)__ 
+
+* Schedule: 
+  - [ ] New Appointment  -> new page/empty task page
+  - [ ] Details -> Task Detail
+ 
+* Task detail:
+  - [ ] Modify
+  - [ ] Save, delete
+
+* Client Search:
+  - [ ] Search functionality
+
+* Client detail:
+  - [ ] Modify
+  - [ ] Save, delete
+
