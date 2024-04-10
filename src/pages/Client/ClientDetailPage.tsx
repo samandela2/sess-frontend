@@ -5,7 +5,7 @@ const ClientPage = () => {
   const [client, setClient] = useState<ClientProps[]>([]);
 
   useEffect(() => {
-    fetch("/clientData.json") // path to your json file
+    fetch("/clientData.json")
       .then((response) => response.json())
       .then((data) => setClient(data))
       .catch((error) => console.error("Error fetching Client data", error));
