@@ -97,9 +97,6 @@ const SchedulePage = () => {
   return (
     <div>
       <h1>Schedule</h1>
-      <LinkContainer to="/client-details" style={{ marginRight: "5px" }}>
-        <Button variant="primary">Client Details</Button>
-      </LinkContainer>
 
       <LinkContainer to="/new-appointment">
         <Button variant="primary">New Appointment</Button>
@@ -113,6 +110,7 @@ const SchedulePage = () => {
               <th>End Time</th>
               <th>Worker Name</th>
               <th>Client Name</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -123,6 +121,9 @@ const SchedulePage = () => {
                 <td>{item.endTime}</td>
                 <td>{item.workerName}</td>
                 <td>{item.clientName}</td>
+                <td>
+                  <Button variant="primary">Details</Button>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,3 +1,6 @@
+import React from "react";
+import "./TaskBasic.css";
+
 export interface TaskBasicProps {
   taskId: number;
   startTime: string;
@@ -7,7 +10,7 @@ export interface TaskBasicProps {
 
 const TaskBasic = ({ taskId, startTime, location, type }: TaskBasicProps) => {
   return (
-    <div>
+    <div className="TaskBasic">
       <p>
         <strong>Start Time:</strong> {startTime}
       </p>

@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Homepage.css";
 
 import User, { UserProps } from "../components/User";
-import TaskBasic, { TaskBasicProps } from "../components/TaskBasic";
+import TaskBasic, {
+  TaskBasicProps,
+} from "../components/Task_Component/TaskBasic";
 
 import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "react-bootstrap";
-
-/**
- * TODO:
- * Home:
- * Profile: Read Name,Role
- * Schedule: Read first 2 tasks with onClick navigation
- * Actions: Create Appointment(admin)
- *
- */
 
 const Homepage = () => {
   const [user, setUser] = useState<UserProps[]>([]);
@@ -42,7 +36,7 @@ const Homepage = () => {
         {user.length > 0 && <User {...user[0]} />}
       </section>
 
-      <section>
+      <section className="Schedule">
         <h2>Schedule</h2>
         <ul>
           {taskBasics.map((taskBasics) => (

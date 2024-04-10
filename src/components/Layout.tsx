@@ -7,7 +7,9 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { isAuthenticated } = useAuth();
+  // const { isAuthenticated } = useAuth();
+  const isAuthenticated = true;
+
   return (
     <>
       <header>{isAuthenticated && <Navbar />}</header>

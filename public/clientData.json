@@ -1,0 +1,5 @@
+[
+    {"clientId":99,"firstName": "John","lastName": "Smith","gender": "Male","ethnicity": "White","dateOfBirth": "1999-11-11","address": "1234 main st","language": "English","zipcode": "94111","district":4,"phoneNumber": "123-456-7890","infoUrl":"sample.com"},
+    {"clientId":100,"firstName": "Jane","lastName": "Smith","gender": "Female","ethnicity": "White","dateOfBirth": "1933-11-11","address": "1234 second st","lnguage": "English","zipcode": "94111","district":5,"phoneNumber": "098-765-4321","infoUrl":"sample2.com"}
+ 
+]
