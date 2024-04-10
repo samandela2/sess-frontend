@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { Container, Form, Button } from "react-bootstrap";
-import "../Login.css";
+import "./Login.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -20,8 +20,6 @@ function Login() {
       navigate("/home"); // Redirect to the Homepage on successful login
     } else {
       console.log("Invalid credentials");
-   
-      
     }
   };
 
