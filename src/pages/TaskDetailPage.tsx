@@ -25,6 +25,9 @@ const TaskPage = () => {
         <button type="button" className="btn btn-primary">
           Modify
         </button>
+        <button type="button" className="btn btn-primary">
+          Save
+        </button>
         <button type="button" className="btn btn-danger">
           Delete
         </button>

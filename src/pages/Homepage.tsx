@@ -23,7 +23,7 @@ const Homepage = () => {
   }, []);
 
   useEffect(() => {
-    fetch("/taskBasicsListData.json")
+    fetch("/taskData.json")
       .then((response) => response.json())
       .then((data) => setTaskBasics(data))
       .catch((error) => console.error("Fetching tasks basic data fail", error));
