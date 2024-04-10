@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Client, { ClientProps } from "./Client_Component/Client";
+import Task, { TaskProps } from "../../components/Task_Component/Task";
 
-const ClientPage = () => {
-  const [client, setClient] = useState<ClientProps[]>([]);
+const TaskPage = () => {
+  const [task, setTask] = useState<TaskProps[]>([]);
 
   useEffect(() => {
-    fetch("/clientData.json") // path to your json file
+    fetch("/taskData.json") // path to your json file
       .then((response) => response.json())
-      .then((data) => setClient(data))
-      .catch((error) => console.error("Error fetching Client data", error));
+      .then((data) => setTask(data))
+      .catch((error) => console.error("Error fetching Task data", error));
   }, []);
 
-  if (!client) {
-    return <div>Loading Client...</div>; // Or some loading spinner
+  if (!task) {
+    return <div>Loading Task...</div>; // Or some loading spinner
   }
 
   return (
     <div>
       <section>
-        <h2>Client</h2>
-        {client.length > 0 && <Client {...client[0]} />}
+        <h2>Task</h2>
+        {task.length > 0 && <Task {...task[0]} />}
       </section>
       <section>
         <button type="button" className="btn btn-primary">
@@ -36,4 +36,4 @@ const ClientPage = () => {
   );
 };
 
-export default ClientPage;
+export default TaskPage;
