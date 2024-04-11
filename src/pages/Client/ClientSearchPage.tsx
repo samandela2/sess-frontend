@@ -23,6 +23,7 @@ const ClientSearchPage = () => {
     const searchParams = { firstName, lastName, phoneNumber };
     try {
       const results = await searchClients(searchParams);
+      //TODO: Handle results
       console.log("result is " + results);
     } catch (error) {
       alert("Error searching clients");

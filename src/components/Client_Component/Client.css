@@ -1,0 +1,33 @@
+
+.form-floating {
+    position: relative;
+    width: 100%; /* Ensures the container takes the full width of its parent */
+    max-width: 500px; /* Limits the maximum width to prevent overly wide fields */
+    margin: 0 auto; /* Centers the form in the parent container */
+}
+
+.form-floating input[type="email"],
+.form-floating input[type="text"],
+.form-floating input[type="number"]{
+    width: 100%; /* Takes the full width of the form-floating container */
+    line-height: 1.25;
+    padding: 0.75rem 1rem; /* Adjust padding to reduce vertical height */
+    padding-top: 1.625rem; /* Keeps enough space for the label to float */
+    padding-bottom: 0.625rem; /* Adjust bottom padding */
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.form-floating label {
+    display: block; /* Ensures the label takes the full width and doesn't overlap input */
+    opacity: 0.65;
+    transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem); /* Adjust transform to position label correctly */
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    color: #6c757d;
+}
+
+/* Media Query for smaller devices */
+@media (max-width: 768px) {
+    .form-floating {
+        max-width: 100%; /* Allows the form to adjust to smaller screens */
+    }
+}
