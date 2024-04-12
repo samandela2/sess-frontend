@@ -1,13 +1,18 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useCallback,
+} from "react";
+import { useNavigate } from "react-router-dom";
 
-// Define the shape of the context's value
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: () => void;
+  login: (username: string, password: string) => void;
   logout: () => void;
 }
 
-// Create the context with an initial undefined value
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
@@ -22,8 +27,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+  const login = useCallback(async (username: string, password: string) => {
+    const response = await fetch("http://localhost:8080/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-  const login = () => setIsAuthenticated(true);
+    if (response.ok) {
+      setIsAuthenticated(true);
+      if (response.headers.get("content-type")?.includes("application/json")) {
+        const data = await response.json();
+        console.log("Login Successful:", data.message, data.jwt);
+      } else {
+        console.log("Response not JSON");
+      }
+      navigate("/home");
+    } else {
+      setIsAuthenticated(false);
+      const errorData = await response.json();
+      console.error("Login failed.");
+    }
+  }, []);
   const logout = () => setIsAuthenticated(false);
 
   return (

@@ -16,27 +16,12 @@ export interface ClientProps {
   phoneNumber: string;
   infoUrl: string;
   comment: string;
+  Uneditable?: boolean;
 }
 
 function Client(props: ClientProps) {
-  const Disabled = false;
-
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [client, setClient] = useState<ClientProps>(() => ({
-    clientId: props.clientId,
-    firstName: props.firstName || "",
-    lastName: props.lastName || "",
-    gender: props.gender || "",
-    ethnicity: props.ethnicity || "",
-    dateOfBirth: props.dateOfBirth || "",
-    address: props.address || "",
-    language: props.language || "",
-    zipcode: props.zipcode || "",
-    district: props.district || 0,
-    phoneNumber: props.phoneNumber || "",
-    infoUrl: props.infoUrl || "",
-    comment: props.comment || "",
-  }));
+  const [client, setClient] = useState<ClientProps>(props);
 
   const handlePhoneChange = (value: string) => {
     setPhoneNumber(value);
@@ -64,7 +49,7 @@ function Client(props: ClientProps) {
           name="firstName"
           value={client.firstName}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">First Name</label>
       </div>
@@ -78,7 +63,7 @@ function Client(props: ClientProps) {
           name="lastName"
           value={client.lastName}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Last Name</label>
       </div>
@@ -92,7 +77,7 @@ function Client(props: ClientProps) {
           name="gender"
           value={client.gender}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Gender</label>
       </div>
@@ -106,7 +91,7 @@ function Client(props: ClientProps) {
           name="ethnicity"
           value={client.ethnicity}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Ethnicity</label>
       </div>
@@ -120,7 +105,7 @@ function Client(props: ClientProps) {
           name="dateOfBirth"
           value={client.dateOfBirth}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Date of Birth</label>
       </div>
@@ -134,7 +119,7 @@ function Client(props: ClientProps) {
           name="address"
           value={client.address}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Address</label>
       </div>
@@ -148,7 +133,7 @@ function Client(props: ClientProps) {
           name="language"
           value={client.language}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Language</label>
       </div>
@@ -162,7 +147,7 @@ function Client(props: ClientProps) {
           name="zipcode"
           value={client.zipcode}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Zipcode</label>
       </div>
@@ -176,7 +161,7 @@ function Client(props: ClientProps) {
           name="district"
           value={client.district}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">District</label>
       </div>
@@ -187,7 +172,7 @@ function Client(props: ClientProps) {
           placeholder=""
           value={client.phoneNumber}
           onChange={handlePhoneChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
       </div>
 
@@ -200,7 +185,7 @@ function Client(props: ClientProps) {
           name="infoUrl"
           value={client.infoUrl}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Info URL</label>
       </div>
@@ -214,7 +199,7 @@ function Client(props: ClientProps) {
           name="comment"
           value={client.comment}
           onChange={handleChange}
-          disabled={Disabled}
+          disabled={client.Uneditable}
         />
         <label htmlFor="floatingInputDisabled">Comment</label>
       </div>

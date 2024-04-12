@@ -4,6 +4,8 @@ import Client, { ClientProps } from "../../components/Client_Component/Client";
 const ClientPage = () => {
   const [client, setClient] = useState<ClientProps[]>([]);
 
+  const [isEditable, setIsEditable] = useState(false);
+
   useEffect(() => {
     fetch("/clientData.json")
       .then((response) => response.json())
@@ -22,7 +24,11 @@ const ClientPage = () => {
         {client.length > 0 && <Client {...client[0]} />}
       </section>
       <section>
-        <button type="button" className="btn btn-primary">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setIsEditable(true)}
+        >
           Modify
         </button>
         <button type="button" className="btn btn-primary">
