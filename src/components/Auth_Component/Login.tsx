@@ -10,57 +10,11 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = event.target;
-  //   setCredentials((prevState) => ({ ...prevState, [name]: value }));
-  // };
-
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault(); // Prevent the form from being submitted to the server traditionally
-    // try {
-    //   const response = await fetch("http://localhost:8080/login", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(credentials),
-    //     credentials: "include",
-    //   });
-    //   console.log(response);
-
-    //   if (response.ok) {
-    //     if (
-    //       response.headers.get("content-type")?.includes("application/json")
-    //     ) {
-    //       const data = await response.json();
-    //       console.log("Login Successful:", data.message, data.jwt);
-    //     } else {
-    //       console.log("Response not JSON");
-    //     }
 
     login(username, password);
-    //   } else {
-
-    //     const errorData = await response.json();
-    //     console.error("Login failed.");
-    //   }
-    // } catch (error) {
-    //   console.error("Network error:", error);
-    // }
   };
-
-  // const handleLogin = (event: FormEvent<HTMLFormElement>): void => {
-  //   event.preventDefault();
-  // if (
-  //   (username === "john" && password === "pwd123") ||
-  //   (username === "jane" && password === "abc456")
-  // ) {
-  //   login();
-  //   navigate("/home"); // Redirect to the Homepage on successful login
-  // } else {
-  //   console.log("Invalid credentials");
-  // }
-  // };
 
   return (
     <Container
