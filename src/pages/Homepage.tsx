@@ -16,7 +16,7 @@ const Homepage = () => {
 
   useEffect(() => {
     fetch("/adminUserData.json")
-      // fetch("/normalUserData.json")
+      // fetch("/normalUserData.json") // Uncomment to fetch data for normal users
       .then((response) => response.json())
       .then((data) => setUser(data))
       .catch((error) => console.error("Fetching user data fail", error));
@@ -37,7 +37,7 @@ const Homepage = () => {
       </section>
 
       <section className="Schedule">
-        <h2>Schedule</h2>
+        <h2>My Schedule</h2>
         <ul>
           {taskBasics.map((taskBasics) => (
             <TaskBasic key={taskBasics.taskId} {...taskBasics} />
@@ -45,9 +45,18 @@ const Homepage = () => {
         </ul>
       </section>
 
+      {/* General section for all users */}
+      <section className="general-actions">
+        <h2>General Actions</h2>
+        <LinkContainer to="/schedule">
+          <Button variant="success">Check Schedule</Button>
+        </LinkContainer>
+      </section>
+
+      {/* Admin specific section */}
       {user.length > 0 && user[0].role === "ADMIN" && (
         <section>
-          <h2>Actions</h2>
+          <h2>Admin Actions</h2>
           <div className="input-group mb-3 custom-search-group">
             <input
               type="search"

@@ -25,7 +25,7 @@ function App() {
           <Route path="/home" element={<Homepage />} />
           <Route path="/profile" element={<Profilepage />} />
           <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="/task" element={<TaskDetailPage />} />
+          <Route path="/task-details" element={<TaskDetailPage />} />
           <Route path="/client-search" element={<ClientSearchPage />} />
           <Route path="/client-details" element={<ClientDetailPage />} />
           <Route path="/appointment-slot" element={<AppointmentSlotPage />} />

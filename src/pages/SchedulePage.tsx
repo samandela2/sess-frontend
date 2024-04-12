@@ -122,7 +122,9 @@ const SchedulePage = () => {
                 <td>{item.workerName}</td>
                 <td>{item.clientName}</td>
                 <td>
-                  <Button variant="primary">Details</Button>
+                  <LinkContainer to="/task-details">
+                    <Button variant="primary">Details</Button>
+                  </LinkContainer>
                 </td>
               </tr>
             ))}
