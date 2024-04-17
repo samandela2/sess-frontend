@@ -40,7 +40,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (token) {
       localStorage.setItem("token", token);
       setIsAuthenticated(true);
-      navigate("/home");
     } else {
       localStorage.removeItem("token");
       setIsAuthenticated(false);
@@ -48,6 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const login = async (username: string, password: string) => {
+    console.log("Logging in... \nUsername:", username, "\nPassword:", password);
     try {
       const response = await fetch("/login", {
         method: "POST",
@@ -56,10 +56,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
         body: JSON.stringify({ username, password }),
       });
+      console.log("Response:", response);
 
-      const data = await response.json();
-      if (data.token) {
-        setAuthState(data.token);
+      const token = response.headers.get("Authorization")?.split(" ")[1];
+      console.log("token:", token);
+      if (token) {
+        setAuthState(token);
+        navigate("/home");
       } else {
         throw new Error("No token returned");
       }
