@@ -4,6 +4,20 @@ The project use : **React JS** as framework;
 With support from: **Bootstrap**, **Vite**
 
 
+### Endpoint
+"./login"
+"./register"
+"./home"
+"./clients"
+"./clients/{ID}"
+"./clients/search"
+"./tasks"
+"./tasks/{ID}"
+"./tasks/search"
+
+
+
+
 ### Todo
 * Login, Logout : Authorization, Authentication
   
@@ -11,6 +25,7 @@ With support from: **Bootstrap**, **Vite**
   - [ ] Schedule: Read **first 2** tasks from most recent time current user   
   - [ ] Actions: 
     **Create Appointment(admin)**
+    **Create client(admin)**
     **Search client(admin)**
     **Check Schedule (both)**
 

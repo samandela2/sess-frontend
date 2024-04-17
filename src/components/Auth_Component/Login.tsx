@@ -10,17 +10,10 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleLogin = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    if (
-      (username === "john" && password === "pwd123") ||
-      (username === "jane" && password === "abc456")
-    ) {
-      login();
-      navigate("/home"); // Redirect to the Homepage on successful login
-    } else {
-      console.log("Invalid credentials");
-    }
+  const handleLogin = (event: React.FormEvent) => {
+    event.preventDefault(); // Prevent the form from being submitted to the server traditionally
+
+    login(username, password);
   };
 
   return (
@@ -50,7 +43,9 @@ function Login() {
             <Form.Control
               type="text"
               value={username}
+              name="username"
               onChange={(e) => setUsername(e.target.value)}
+              // onChange={handleInputChange}
             />
           </Form.Group>
 
@@ -59,7 +54,9 @@ function Login() {
             <Form.Control
               type="password"
               value={password}
+              name="password"
               onChange={(e) => setPassword(e.target.value)}
+              // onChange={handleInputChange}
             />
           </Form.Group>
 

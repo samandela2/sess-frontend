@@ -1,13 +1,20 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+} from "react";
+import { useNavigate } from "react-router-dom";
 
-// Define the shape of the context's value
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: () => void;
+  login: (username: string, password: string) => void;
   logout: () => void;
+  setAuthState: (token: string) => void;
 }
 
-// Create the context with an initial undefined value
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
@@ -18,17 +25,77 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthState(token);
+    }
+  }, []);
+
+  const setAuthState = (token: string) => {
+    if (token) {
+      localStorage.setItem("token", token);
+      setIsAuthenticated(true);
+    } else {
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
+    }
+  };
+
+  const login = async (username: string, password: string) => {
+    console.log("Logging in... \nUsername:", username, "\nPassword:", password);
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      console.log("Response:", response);
+
+      const token = response.headers.get("Authorization")?.split(" ")[1];
+      console.log("token:", token);
+      if (token) {
+        setAuthState(token);
+        navigate("/home");
+      } else {
+        throw new Error("No token returned");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      logout();
+    }
+  };
+
+  // if (response.ok) {
+  //   setIsAuthenticated(true);
+  //   if (
+  //     response.headers.get("content-type")?.includes("application/json")
+  //   ) {
+  //     const data = await response.json();
+  //     console.log("Login Successful:", data.message, data.jwt);
+  //   } else {
+  //     console.log("Response not JSON");
+  //   }
+  //   navigate("/home");
+  // } else {
+  //   setIsAuthenticated(false);
+  //   const errorData = await response.json();
+  //   console.error("Login failed.");
+  // }
+  // }, []);
+  const logout = () => setAuthState("");
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, setAuthState }}
+    >
       {children}
     </AuthContext.Provider>
   );
-};
+}

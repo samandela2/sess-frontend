@@ -23,10 +23,10 @@ const NavigationBar = () => {
           <LinkContainer to="/task-details">
             <Nav.Link>Task Details</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/client-search">
+          <LinkContainer to="/clients/search">
             <Nav.Link>Client Search</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/client-details">
+          <LinkContainer to="/clients/50">
             <Nav.Link>Client Details</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/appointment-slot">
