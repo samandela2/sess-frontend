@@ -14,6 +14,7 @@ import Logoff from "./components/Auth_Component/Logoff";
 import React from "react";
 import ClientDetailPage from "./pages/Client/ClientDetailPage";
 import TaskDetailPage from "./pages/Task/TaskDetailPage";
+import AppointmentSlotPage from "./pages/AppointmentSlotPage";
 
 function App() {
   return (
@@ -24,9 +25,10 @@ function App() {
           <Route path="/home" element={<Homepage />} />
           <Route path="/profile" element={<Profilepage />} />
           <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="/task" element={<TaskDetailPage />} />
+          <Route path="/task-details" element={<TaskDetailPage />} />
           <Route path="/client-search" element={<ClientSearchPage />} />
           <Route path="/client-details" element={<ClientDetailPage />} />
+          <Route path="/appointment-slot" element={<AppointmentSlotPage />} />
           <Route path="/logoff" element={<Logoff />} />
           <Route path="/" element={<Navigate replace to="/login" />} />
         </Routes>
