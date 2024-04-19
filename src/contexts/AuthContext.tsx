@@ -44,6 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.removeItem("token");
       setIsAuthenticated(false);
     }
+    setIsAuthenticated(true);
   };
 
   const login = async (username: string, password: string) => {

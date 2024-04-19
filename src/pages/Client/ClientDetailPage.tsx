@@ -17,35 +17,35 @@ function ClientDetailPage() {
   const handleDelete = () => {
     console.log("Deleting Client:", client);
     setClient(null);
-    // navigate("/clients/search");
+    navigate("/clients/search");
   };
 
-  // useEffect(() => {
-  //   fetch("/clientData.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setClient(data))
-  //     .catch((error) => console.error("Error fetching Client data", error));
-  // }, []);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/clients/${id}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setClient(data);
-      } catch (error) {
-        console.error("Failed to fetch client data:", error);
-      }
-    };
+    fetch("/clientData.json")
+      .then((response) => response.json())
+      .then((data) => setClient(data))
+      .catch((error) => console.error("Error fetching Client data", error));
+  }, []);
 
-    if (id) {
-      // Only fetch data if id is not null or undefined
-      fetchData();
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`/clients/${id}`);
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       const data = await response.json();
+  //       setClient(data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch client data:", error);
+  //     }
+  //   };
+
+  //   if (id) {
+  //     // Only fetch data if id is not null or undefined
+  //     fetchData();
+  //   }
+  // }, [id]);
 
   useEffect(() => {
     if (client) {
