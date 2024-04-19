@@ -44,52 +44,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.removeItem("token");
       setIsAuthenticated(false);
     }
-    setIsAuthenticated(true);
   };
 
   const login = async (username: string, password: string) => {
     console.log("Logging in... \nUsername:", username, "\nPassword:", password);
-    try {
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      console.log("Response:", response);
 
-      const token = response.headers.get("Authorization")?.split(" ")[1];
-      console.log("token:", token);
-      if (token) {
-        setAuthState(token);
-        navigate("/home");
-      } else {
-        throw new Error("No token returned");
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-      logout();
-    }
+    //TODO: Disable for now
+    // try {
+    // const response = await fetch("/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ username, password }),
+    // });
+    // console.log("Response:", response);
+
+    // const token = response.headers.get("Authorization")?.split(" ")[1];
+    // console.log("token:", token);
+    // if (token) {
+    //     setAuthState(token);
+    //     navigate("/home");
+    //   } else {
+    //     throw new Error("No token returned");
+    //   }
+    // } catch (error) {
+    //   console.error("Login failed:", error);
+    //   logout();
+    // }
+
+    const token = "fakeToken";
+    setAuthState(token);
+    navigate("/home");
   };
 
-  // if (response.ok) {
-  //   setIsAuthenticated(true);
-  //   if (
-  //     response.headers.get("content-type")?.includes("application/json")
-  //   ) {
-  //     const data = await response.json();
-  //     console.log("Login Successful:", data.message, data.jwt);
-  //   } else {
-  //     console.log("Response not JSON");
-  //   }
-  //   navigate("/home");
-  // } else {
-  //   setIsAuthenticated(false);
-  //   const errorData = await response.json();
-  //   console.error("Login failed.");
-  // }
-  // }, []);
   const logout = () => setAuthState("");
 
   return (
