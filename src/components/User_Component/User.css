@@ -1,0 +1,6 @@
+.User-floating{
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Optional: rounded corners for a softer look */
+    box-shadow: 0 2px 4px rgba(100, 88, 88, 0.1); /* Optional: subtle shadow for depth */
+    background-color: #ffffff; /* Optional: background color */
+}

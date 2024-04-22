@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./Homepage.css";
 import Alert from "../components/Alert";
 
-import User, { UserProps } from "../components/User";
+import UserBasic, {
+  UserBasicProps,
+} from "../components/User_Component/UserBasic";
 import TaskBasic, {
   TaskBasicProps,
 } from "../components/Task_Component/TaskBasic";
@@ -12,7 +14,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "react-bootstrap";
 
 const Homepage = () => {
-  const [user, setUser] = useState<UserProps[]>([]);
+  const [userBasic, setUserBasic] = useState<UserBasicProps[]>([]);
   const [taskBasics, setTaskBasics] = useState<TaskBasicProps[]>([]);
   const adminDataUrl = "/adminUserData.json";
   const normalUserDataUrl = "/normalUserData.json";
@@ -22,7 +24,7 @@ const Homepage = () => {
     fetch(adminDataUrl)
       // fetch("/normalUserData.json") // Uncomment to fetch data for normal users
       .then((response) => response.json())
-      .then((data) => setUser(data))
+      .then((data) => setUserBasic(data))
       .catch((error) => console.error("Fetching user data fail", error));
   }, []);
 
@@ -44,7 +46,7 @@ const Homepage = () => {
     <div>
       <section>
         <h2>Profile</h2>
-        {user.length > 0 && <User {...user[0]} />}
+        {userBasic.length > 0 && <UserBasic {...userBasic[0]} />}
       </section>
 
       <section className="Schedule">
@@ -65,7 +67,7 @@ const Homepage = () => {
       </section>
 
       {/* Admin specific section */}
-      {user.length > 0 && user[0].role === "ADMIN" && (
+      {userBasic.length > 0 && userBasic[0].role === "ADMIN" && (
         <section>
           <h2>Admin Actions</h2>
           {/* <div className="input-group mb-3 custom-search-group">
