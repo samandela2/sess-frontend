@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
+import Alert from "../components/Alert";
 
-import User, { UserProps } from "../components/User";
+import UserBasic, {
+  UserBasicProps,
+} from "../components/User_Component/UserBasic";
 import TaskBasic, {
   TaskBasicProps,
 } from "../components/Task_Component/TaskBasic";
@@ -11,29 +14,39 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "react-bootstrap";
 
 const Homepage = () => {
-  const [user, setUser] = useState<UserProps[]>([]);
+  const [userBasic, setUserBasic] = useState<UserBasicProps[]>([]);
   const [taskBasics, setTaskBasics] = useState<TaskBasicProps[]>([]);
+  const adminDataUrl = "/adminUserData.json";
+  const normalUserDataUrl = "/normalUserData.json";
+  const taskBasicsUrl = "/taskData.json";
 
   useEffect(() => {
-    fetch("/adminUserData.json")
+    fetch(adminDataUrl)
       // fetch("/normalUserData.json") // Uncomment to fetch data for normal users
       .then((response) => response.json())
-      .then((data) => setUser(data))
+      .then((data) => setUserBasic(data))
       .catch((error) => console.error("Fetching user data fail", error));
   }, []);
 
   useEffect(() => {
-    fetch("/taskData.json")
+    fetch(taskBasicsUrl)
       .then((response) => response.json())
       .then((data) => setTaskBasics(data))
       .catch((error) => console.error("Fetching tasks basic data fail", error));
   }, []);
 
+  const [showAlert, setShowAlert] = useState(false);
+
+  const generateReport = () => {
+    console.log("Generating report...");
+    setShowAlert(true);
+  };
+
   return (
     <div>
       <section>
         <h2>Profile</h2>
-        {user.length > 0 && <User {...user[0]} />}
+        {userBasic.length > 0 && <UserBasic {...userBasic[0]} />}
       </section>
 
       <section className="Schedule">
@@ -54,24 +67,33 @@ const Homepage = () => {
       </section>
 
       {/* Admin specific section */}
-      {user.length > 0 && user[0].role === "ADMIN" && (
+      {userBasic.length > 0 && userBasic[0].role === "ADMIN" && (
         <section>
           <h2>Admin Actions</h2>
-          <div className="input-group mb-3 custom-search-group">
+          {/* <div className="input-group mb-3 custom-search-group">
             <input
               type="search"
               className="form-control"
               placeholder="Search client (Admin)"
               aria-label="Search client"
             />
-            <Link
-              to="/client-search"
-              className="btn btn-outline-secondary"
-              type="button"
-            >
+            <button className="btn btn-outline-secondary" type="button">
               Search
-            </Link>
-          </div>
+            </button>
+          </div> */}
+          <Button
+            variant="primary"
+            style={{ marginRight: "10px" }}
+            onClick={generateReport}
+          >
+            Generate report
+          </Button>
+
+          {showAlert && (
+            <Alert onClose={() => setShowAlert(false)}>
+              Report generated successfully!
+            </Alert>
+          )}
 
           <Link to="/appointment-slot" className="btn btn-primary my-2">
             Create Appointment

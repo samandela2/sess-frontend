@@ -7,15 +7,15 @@ import {
 import Layout from "./components/Layout";
 import Login from "./components/Auth_Component/Login";
 import Homepage from "./pages/Homepage";
-import Profilepage from "./pages/Profilepage";
+import Profilepage from "./pages/User/Profilepage";
 import SchedulePage from "./pages/SchedulePage";
 import ClientSearchPage from "./pages/Client/ClientSearchPage";
 import Logoff from "./components/Auth_Component/Logoff";
 
 import ClientDetailPage from "./pages/Client/ClientDetailPage";
 import TaskDetailPage from "./pages/Task/TaskDetailPage";
-import AppointmentSlotPage from "./pages/AppointmentSlotPage";
-import Register from "./pages/Register";
+import AppointmentSlotPage from "./pages/Task/NewTaskPage";
+import Register from "./pages/User/Register";
 
 function App() {
   return (

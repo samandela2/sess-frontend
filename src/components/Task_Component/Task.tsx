@@ -1,4 +1,4 @@
-import React from "react";
+import "./Task.css";
 
 export interface TaskProps {
   taskId: number;
@@ -11,6 +11,20 @@ export interface TaskProps {
   comment?: string | null;
 }
 
+export const initNewTask = (): TaskProps => {
+  console.log("Init new task");
+  return {
+    taskId: 0,
+    startTime: "",
+    endTime: "",
+    location: "",
+    type: "",
+    clientId: undefined,
+    ownerId: 0,
+    comment: null,
+  };
+};
+
 const Task = ({
   taskId,
   startTime = "TBD",
@@ -19,7 +33,7 @@ const Task = ({
   type,
   clientId = "N/A",
   ownerId,
-  comment = "N/A",
+  comment = "",
 }: TaskProps) => {
   return (
     <div className="Task">
