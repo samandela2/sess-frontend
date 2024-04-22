@@ -98,7 +98,7 @@ const SchedulePage = () => {
     <div>
       <h1>Schedule</h1>
 
-      <LinkContainer to="/new-appointment">
+      <LinkContainer to="/appointment-slot">
         <Button variant="primary">New Appointment</Button>
       </LinkContainer>
       <div className="table-responsive">
@@ -122,7 +122,7 @@ const SchedulePage = () => {
                 <td>{item.workerName}</td>
                 <td>{item.clientName}</td>
                 <td>
-                  <LinkContainer to="/task-details">
+                  <LinkContainer to="/clients/50">
                     <Button variant="primary">Details</Button>
                   </LinkContainer>
                 </td>
