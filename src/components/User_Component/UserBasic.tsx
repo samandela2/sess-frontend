@@ -1,3 +1,5 @@
+import "./UserBasic.css";
+
 export interface UserBasicProps {
   id: number;
   username: string;

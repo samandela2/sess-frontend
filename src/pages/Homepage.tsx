@@ -51,11 +51,10 @@ const Homepage = () => {
 
       <section className="scheduleBasic">
         <h2>My Schedule</h2>
-        <ul>
-          {taskBasics.map((taskBasics) => (
-            <TaskBasic key={taskBasics.taskId} {...taskBasics} />
-          ))}
-        </ul>
+
+        {taskBasics.map((taskBasics) => (
+          <TaskBasic key={taskBasics.taskId} {...taskBasics} />
+        ))}
       </section>
 
       {/* General section for all users */}

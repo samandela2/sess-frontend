@@ -1,6 +1,8 @@
-.UserBasic{
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Optional: rounded corners for a softer look */
-    box-shadow: 0 2px 4px rgba(100, 88, 88, 0.1); /* Optional: subtle shadow for depth */
-    background-color: #a49090; /* Optional: background color */
-  }
+.UserBasic {
+  border: 1px solid #ccc; /* Light grey border consistent with Homepage */
+  border-radius: 8px; /* Rounded corners like in Homepage */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Consistent shadow depth */
+  background-color: #fff; /* White background for coherence */
+  padding: 15px; /* Consistent padding */
+  margin-bottom: 20px; /* Bottom margin if needed */
+}

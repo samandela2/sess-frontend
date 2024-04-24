@@ -1,6 +1,9 @@
-.Task{
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Optional: rounded corners for a softer look */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: subtle shadow for depth */
-    background-color: #fff; /* Optional: background color */
-  }
+.Task {
+  border: 1px solid #d1e7dd; /* Adjusted to match Homepage border color */
+  border-radius: 10px; /* To align with the rounded corners in Homepage sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Matching the shadow depth with Homepage */
+  background-color: #fff; /* Consistent background color */
+  padding: 15px; /* Ensuring adequate padding */
+  margin-bottom: 20px; /* Consistent spacing between Task items if listed */
+  
+}

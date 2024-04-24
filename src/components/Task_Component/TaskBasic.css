@@ -1,6 +1,8 @@
-.TaskBasic{
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Optional: rounded corners for a softer look */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: subtle shadow for depth */
-    background-color: #fff; /* Optional: background color */
-  }
+.TaskBasic {
+  border: 1px solid #ccc; /* Adjust to match Homepage */
+  border-radius: 8px; /* Make consistent with homepage */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Match shadow with homepage sections */
+  background-color: #fff; /* Keep background consistent */
+  padding: 15px; /* Ensure padding is adequate */
+  margin-bottom: 20px; /* Space between tasks if stacked */
+}

@@ -1,81 +1,80 @@
-/* General styles */
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
-}
-
-/* Section styles */
-section {
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  color: #0056b3;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Button and link styles */
-button, .btn {
-  background-color: #007bff;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover, .btn:hover {
-  background-color: #0056b3;
-}
-
-.LinkContainer {
-  display: block;
-  text-decoration: none;
-  color: #007bff;
-  margin: 10px 0;
-}
-
-.LinkContainer:hover {
-  text-decoration: underline;
-}
-
-/* Custom search group styles */
-.custom-search-group {
-  display: flex;
-  max-width: 450px;
-  margin-bottom: 20px;
-}
-
-.custom-search-group input {
-  flex: 1;
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-}
-
-.custom-search-group button {
-  border-radius: 0 4px 4px 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  body {
-      padding: 10px;
+@media (min-width: 1024px) { /* For desktop screens */
+  .section-container { /* You might need to add this class to your HTML */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+
+  .profileBasic, .scheduleBasic, .general-actions, .admin-actions {
+    flex: 1 1 45%; /* Each section takes up roughly half the width */
+    margin: 10px; /* Adjust margin for spacing */
+  }
+}
+
+
+.profileBasic, .scheduleBasic, .general-actions, .admin-actions {
+  background-color: #ffffff; /* White background for a clean look */
+  border: 1px solid #d1e7dd; /* Soft green border for a touch of color */
+  padding: 20px; /* Padding around the profile section */
+  margin-top: 20px; /* Margin from the top of the page */
+  border-radius: 10px; /* Rounded corners for a friendly appearance */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Subtle shadow for depth */
+}
+
+
+
+
+.profileBasic h2, .scheduleBasic h2, .general-actions h2, .admin-actions h2 {
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+/* New spacing for task items */
+.scheduleBasic ul li .scheduleBasic .task-item {
+  margin-bottom: 10px; /* Adjust this value as needed to increase/decrease space */
+}
+
+/* Or if using divs for task items */
+.scheduleBasic .task-item {
+  margin-bottom: 20px; /* Adjust this value as needed to increase/decrease space */
+}
+/* Responsive adjustments for better alignment and display */
+@media (max-width: 768px) {
+  .profileBasic, .scheduleBasic {
+      padding: 10px; /* Slightly reduced padding for smaller screens */
+  }
+}
+
+
+
+/* Button styling in General Actions for a more friendly feel */
+.general-actions .btn-success {
+  background-color: #198754; /* Standard Bootstrap success color */
+  border-color: #198754; /* Matching border color */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow to the button */
+}
+
+.general-actions .btn-success:hover {
+  background-color: #157347; /* Darker green on hover for a nice effect */
+}
+
+
+/* Admin-specific styles */
+.admin-actions {
+  background-color: #ffffff; /* A very light grey background for subtlety */
+  border: 1px solid #d1e7dd;/* A subtle blue border on the left for emphasis */
+  padding-left: 15px; /* Added padding for better text alignment */
+  margin-top: 20px; /* Extra margin for separation from other sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Soft shadow for depth */
+  color: #495057; /* Slightly darker text for better readability */
+   /* Smooth transition for hover effects */
+}
+
+
+
+
+
 
   .custom-search-group {
       flex-direction: column;
@@ -90,9 +89,10 @@ button:hover, .btn:hover {
   .custom-search-group button {
       margin-top: 10px;
   }
-}
-/* Homepage.css */
-.custom-search-group {
-    max-width: 450px;
+
+  h2 {
+      font-size: 20px; /* Slightly smaller font size for headers on small screens */
   }
+
+
   
