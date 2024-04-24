@@ -8,10 +8,14 @@ function ClientDetailPage() {
 
   const [client, setClient] = useState<ClientProps | null>(null);
   const [isEditable, setIsEditable] = useState(false);
+  const [isValidateData, setIsValidateData] = useState(true);
   const navigate = useNavigate();
 
+  const validateData = () => {};
   const handleSubmit = () => {
-    setIsEditable(false);
+    if (isValidateData) {
+      setIsEditable(false);
+    }
   };
 
   const handleDelete = () => {
@@ -27,26 +31,6 @@ function ClientDetailPage() {
       .catch((error) => console.error("Error fetching Client data", error));
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`/clients/${id}`);
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-  //       const data = await response.json();
-  //       setClient(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch client data:", error);
-  //     }
-  //   };
-
-  //   if (id) {
-  //     // Only fetch data if id is not null or undefined
-  //     fetchData();
-  //   }
-  // }, [id]);
-
   useEffect(() => {
     if (client) {
       console.log("Client is now editable:", isEditable);
@@ -60,11 +44,11 @@ function ClientDetailPage() {
 
   return (
     <div>
-      <section>
+      <section className="clientInfo">
         <h2>Client</h2>
         {client && <Client {...client} />}
       </section>
-      <section>
+      <section className="actionSection">
         <button
           type="button"
           className="btn btn-primary"

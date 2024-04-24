@@ -31,11 +31,11 @@ const TaskPage = () => {
 
   return (
     <div>
-      <section>
+      <section className="taskInfo">
         <h2>Task</h2>
         {task.length > 0 && <Task {...task[0]} />}
       </section>
-      <section>
+      <section className="actionSection">
         <button
           type="button"
           className="btn btn-primary"

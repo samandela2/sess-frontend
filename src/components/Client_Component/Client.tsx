@@ -3,25 +3,39 @@ import PhoneInput, { PhoneInputProps } from "react-phone-input-2";
 import "./Client.css";
 
 export interface ClientProps {
-  clientId: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  ethnicity: string;
-  dateOfBirth: string;
-  address: string;
-  language: string;
-  zipcode: string;
-  district: number;
-  phoneNumber: string;
-  infoUrl: string;
-  comment: string;
+  clientId?: number;
+  firstName?: string;
+  lastName?: string;
+  gender?: string;
+  ethnicity?: string;
+  dateOfBirth?: string;
+  address?: string;
+  language?: string;
+  zipcode?: string;
+  district?: number;
+  phoneNumber?: string;
+  infoUrl?: string;
+  comment?: string;
   editable?: boolean;
 }
 
 function Client(props: ClientProps) {
   const [phoneNumber, setPhoneNumber] = useState("");
+
   const [client, setClient] = useState<ClientProps>(props);
+  const allowFields = [
+    "firstName",
+    "lastName",
+    "gender",
+    "ethnicity",
+    "dateOfBirth",
+    "address",
+    "language",
+    "zipcode",
+    "district",
+    "infoUrl",
+    "comment",
+  ];
 
   useEffect(() => {
     setClient((prevState) => ({
@@ -40,10 +54,12 @@ function Client(props: ClientProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setClient((prevClient) => ({
-      ...prevClient,
-      [name]: value,
-    }));
+    if (allowFields.includes(name)) {
+      setClient((prevClient) => ({
+        ...prevClient,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -147,12 +163,14 @@ function Client(props: ClientProps) {
 
       <div className="form-floating mb-3">
         <input
-          type="number"
+          type="text"
           className="form-control"
           id="floatingInputDisabled"
           placeholder=""
           name="zipcode"
           value={client.zipcode}
+          maxLength={5}
+          pattern="\d{5}"
           onChange={handleChange}
           disabled={!client.editable}
         />
