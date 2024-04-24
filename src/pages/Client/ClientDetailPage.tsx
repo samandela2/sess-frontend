@@ -11,8 +11,53 @@ function ClientDetailPage() {
   const [isValidateData, setIsValidateData] = useState(true);
   const navigate = useNavigate();
 
-  const validateData = () => {};
+  const validateStringFields = (
+    client: { [key: string]: any },
+    fields: string[]
+  ): boolean => {
+    const alphaRegex = /^[a-zA-Z]+$/;
+    const result = fields.every((field) => {
+      const fieldValue = client[field];
+      const isFieldDefined = fieldValue !== undefined;
+      const isValid = alphaRegex.test(fieldValue);
+
+      // Log information about the field and its validation status
+      console.log(
+        `Checking field: ${field}; Field value: '${fieldValue} ; Is defined: ${isFieldDefined} ; Passes regex: ${isValid}`
+      );
+      // console.log(`Field value: '${fieldValue}'`);
+      // console.log(`Is defined: ${isFieldDefined}`);
+      // console.log(`Passes regex: ${isValid}\n`);
+
+      return isFieldDefined && isValid;
+    });
+    console.log("Overall result is: " + result);
+    return result;
+  };
+
+  const validateData = (client: {
+    firstName?: string;
+    lastName?: string;
+    gender?: string;
+    ethnicity?: string;
+    language?: string;
+  }) => {
+    const isValidClient = validateStringFields(client, [
+      "firstName",
+      "lastName",
+      "gender",
+      "ethnicity",
+      "language",
+    ]);
+
+    setIsValidateData(isValidClient);
+    console.log("isValidClient: " + isValidClient);
+  };
+
   const handleSubmit = () => {
+    if (client) {
+      validateData(client);
+    }
     if (isValidateData) {
       setIsEditable(false);
     }
