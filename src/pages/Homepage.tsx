@@ -44,12 +44,12 @@ const Homepage = () => {
 
   return (
     <div>
-      <section>
+      <section className="profileBasic">
         <h2>Profile</h2>
         {userBasic.length > 0 && <UserBasic {...userBasic[0]} />}
       </section>
 
-      <section className="Schedule">
+      <section className="scheduleBasic">
         <h2>My Schedule</h2>
         <ul>
           {taskBasics.map((taskBasics) => (
@@ -68,7 +68,7 @@ const Homepage = () => {
 
       {/* Admin specific section */}
       {userBasic.length > 0 && userBasic[0].role === "ADMIN" && (
-        <section>
+        <section className="admin-actions">
           <h2>Admin Actions</h2>
           {/* <div className="input-group mb-3 custom-search-group">
             <input

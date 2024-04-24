@@ -60,11 +60,11 @@ function ClientDetailPage() {
 
   return (
     <div>
-      <section>
+      <section className="clientInfo">
         <h2>Client</h2>
         {client && <Client {...client} />}
       </section>
-      <section>
+      <section className="actionSection">
         <button
           type="button"
           className="btn btn-primary"
