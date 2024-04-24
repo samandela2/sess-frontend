@@ -18,11 +18,11 @@ const NewTaskPage = () => {
 
   return (
     <div>
-      <section>
+      <section className="newTaskInfo">
         <h2>Create a New Task</h2>
         <Task {...task} />
       </section>
-      <section>
+      <section className="actionSection">
         <button
           type="button"
           className="btn btn-primary"
