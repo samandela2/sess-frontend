@@ -3,6 +3,7 @@ import Task, {
   TaskProps,
   initNewTask,
 } from "../../components/Task_Component/Task";
+import "./TaskPages.css";
 
 const NewTaskPage = () => {
   const [task, setTask] = useState<TaskProps>(initNewTask());

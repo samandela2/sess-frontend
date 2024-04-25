@@ -15,10 +15,11 @@
 .profileBasic, .scheduleBasic, .general-actions, .admin-actions {
   background-color: #ffffff; /* White background for a clean look */
   border: 1px solid #d1e7dd; /* Soft green border for a touch of color */
-  padding: 20px; /* Padding around the profile section */
+  padding-left: 15px; /* Padding around the profile section */
   margin-top: 20px; /* Margin from the top of the page */
   border-radius: 10px; /* Rounded corners for a friendly appearance */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Subtle shadow for depth */
+  color: #495057; /* Slightly darker text for better readability */
 }
 
 
@@ -52,11 +53,20 @@
 .general-actions .btn-success {
   background-color: #198754; /* Standard Bootstrap success color */
   border-color: #198754; /* Matching border color */
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow to the button */
+  
 }
 
 .general-actions .btn-success:hover {
   background-color: #157347; /* Darker green on hover for a nice effect */
+}
+.general-actions {
+  background-color: #ffffff; /* A very light grey background for subtlety */
+  border: 1px solid #d1e7dd;/* A subtle blue border on the left for emphasis */
+  padding: 15px; /* Added padding for better text alignment */
+  margin-top: 20px; /* Extra margin for separation from other sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06); /* Soft shadow for depth */
+  color: #495057; /* Slightly darker text for better readability */
+   /* Smooth transition for hover effects */
 }
 
 
@@ -71,28 +81,48 @@
    /* Smooth transition for hover effects */
 }
 
+/* Admin-actions specific button styling */
+.admin-actions .btn-primary {
+  background-color: #007bff; /* Bootstrap primary blue */
+  border-color: #007bff;
+}
+
+.admin-actions .btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.admin-actions .btn-danger {
+  background-color: #dc3545; /* Bootstrap danger red */
+  border-color: #dc3545;
+}
+
+.admin-actions .btn-danger:hover {
+  background-color: #c82333; /* Slightly darker red on hover */
+}
+
+/* Consistent button sizing and margins across admin-actions */
+.admin-actions .btn, .general-actions .btn{
+  padding: 10px 20px; /* Increased padding to make buttons larger */
+  font-size: 16px; /* Larger font size for better readability */
+  margin: 0 5px; /* Standardized margin around buttons */
+}
+
+/* Applying a consistent shadow to all buttons */
+.general-actions .btn, .admin-actions .btn {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow to the button */
+}
+
+.general-actions .btn:hover, .admin-actions .btn:hover {
+  opacity: 0.85; /* Consistent opacity change on hover for feedback */
+}
 
 
 
 
 
-  .custom-search-group {
-      flex-direction: column;
-  }
-
-  .custom-search-group input,
-  .custom-search-group button {
-      width: 100%;
-      border-radius: 4px;
-  }
-
-  .custom-search-group button {
-      margin-top: 10px;
-  }
-
-  h2 {
+h2 {
       font-size: 20px; /* Slightly smaller font size for headers on small screens */
-  }
+}
 
 
   

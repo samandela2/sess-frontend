@@ -1,0 +1,78 @@
+@media (min-width: 1024px) { /* For desktop screens */
+    .section-container { /* You might need to add this class to your HTML */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+
+  
+    .taskInfo, .newTaskInfo{
+      flex: 1 1 45%; /* Each section takes up roughly half the width */
+      margin: 10px; /* Adjust margin for spacing */
+    }
+  }
+
+.taskInfo, .newTaskInfo {
+    background-color: #ffffff;
+    border: 1px solid #d1e7dd;
+    padding-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Ensure space between sections */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    color: #495057;
+}
+  
+.actionSection {
+    text-align: left; /* Aligning the buttons to the left */
+    padding: 10px;
+    margin-top: 10px; /* Slightly reduced margin from taskInfo for visual grouping */
+}
+  
+.actionSection .btn {
+    margin: 0 5px; /* Reduced space between buttons */
+    padding: 10px 20px; /* Increased padding to make buttons larger */
+    font-size: 16px; /* Larger font size for better readability and button size */
+}
+  
+.actionSection .btn-primary {
+    background-color: #007bff; /* Bootstrap primary blue */
+    border-color: #007bff;
+}
+
+.actionSection .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+  
+.actionSection .btn-danger {
+    background-color: #dc3545; /* Bootstrap danger red */
+    border-color: #dc3545;
+}
+
+.actionSection .btn-danger:hover {
+    background-color: #c82333; /* Slightly darker red on hover */
+}
+
+.actionSection .btn {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow to the button */
+}
+.actionSection .btn:hover {
+    opacity: 0.85; /* Slight opacity change on hover for feedback */
+}
+
+@media (max-width: 768px) {
+    .taskInfo, .actionSection {
+      padding: 15px; /* Reduced padding for smaller screens */
+    }
+
+    .actionSection .btn {
+        padding: 8px 15px; /* Slightly smaller padding for mobile */
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+}
+
+h2 {
+    color: #343a40; /* Consistent header color */
+    font-weight: bold;
+}

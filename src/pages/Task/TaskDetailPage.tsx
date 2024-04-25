@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Task, { TaskProps } from "../../components/Task_Component/Task";
 import Alert from "../../components/Alert";
 import { useNavigate } from "react-router-dom";
+import "./TaskPages.css";
 
 const TaskPage = () => {
   const [task, setTask] = useState<TaskProps[]>([]);

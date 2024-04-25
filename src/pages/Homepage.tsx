@@ -85,7 +85,7 @@ const Homepage = () => {
             style={{ marginRight: "10px" }}
             onClick={generateReport}
           >
-            Generate report
+            Generate Report
           </Button>
 
           {showAlert && (
