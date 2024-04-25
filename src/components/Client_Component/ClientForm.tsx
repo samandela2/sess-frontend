@@ -1,48 +1,52 @@
 import React, { useEffect, useState } from "react";
 import PhoneInput, { PhoneInputProps } from "react-phone-input-2";
-import "./Client.css";
+import "./ClientForm.css";
+import { Client } from "../../types/Interface";
+import {
+  initEmptyClient,
+  allowFields,
+  validateStringFields,
+} from "../../utils/clientHelper";
 
-export interface ClientProps {
-  clientId?: number;
-  firstName?: string;
-  lastName?: string;
-  gender?: string;
-  ethnicity?: string;
-  dateOfBirth?: string;
-  address?: string;
-  language?: string;
-  zipcode?: string;
-  district?: number;
-  phoneNumber?: string;
-  infoUrl?: string;
-  comment?: string;
-  editable?: boolean;
+export interface ClientFormProps {
+  onClientSubmit: (client: Client) => void;
+  client: Client;
 }
 
-function Client(props: ClientProps) {
+export default function ClientForm({
+  client,
+  onClientSubmit,
+}: ClientFormProps) {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isEditable, setIsEditable] = useState(true);
 
-  const [client, setClient] = useState<ClientProps>(props);
-  const allowFields = [
-    "firstName",
-    "lastName",
-    "gender",
-    "ethnicity",
-    "dateOfBirth",
-    "address",
-    "language",
-    "zipcode",
-    "district",
-    "infoUrl",
-    "comment",
-  ];
+  const [isValidData, setIsValidData] = useState<boolean>(true);
 
   useEffect(() => {
     setClient((prevState) => ({
       ...prevState,
-      editable: props.editable,
     }));
-  }, [props.editable]);
+  }, [isEditable]);
+
+  const validateData = (client: {
+    firstName?: string;
+    lastName?: string;
+    gender?: string;
+    ethnicity?: string;
+    language?: string;
+    zipcode?: string;
+  }) => {
+    const isValidClient = validateStringFields(client, [
+      "firstName",
+      "lastName",
+      "gender",
+      "ethnicity",
+      "language",
+    ]);
+
+    setIsValidData(isValidClient);
+    console.log("isValidClient: " + isValidClient);
+  };
 
   const handlePhoneChange = (value: string) => {
     setPhoneNumber(value);
@@ -59,6 +63,7 @@ function Client(props: ClientProps) {
         ...prevClient,
         [name]: value,
       }));
+      // console.log([name] + " : " + value);
     }
   };
 
@@ -72,7 +77,7 @@ function Client(props: ClientProps) {
           name="firstName"
           value={client.firstName}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">First Name</label>
       </div>
@@ -86,7 +91,7 @@ function Client(props: ClientProps) {
           name="lastName"
           value={client.lastName}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Last Name</label>
       </div>
@@ -100,7 +105,7 @@ function Client(props: ClientProps) {
           name="gender"
           value={client.gender}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Gender</label>
       </div>
@@ -114,7 +119,7 @@ function Client(props: ClientProps) {
           name="ethnicity"
           value={client.ethnicity}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Ethnicity</label>
       </div>
@@ -128,7 +133,7 @@ function Client(props: ClientProps) {
           name="dateOfBirth"
           value={client.dateOfBirth}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Date of Birth</label>
       </div>
@@ -142,7 +147,7 @@ function Client(props: ClientProps) {
           name="address"
           value={client.address}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Address</label>
       </div>
@@ -156,7 +161,7 @@ function Client(props: ClientProps) {
           name="language"
           value={client.language}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Language</label>
       </div>
@@ -172,7 +177,7 @@ function Client(props: ClientProps) {
           maxLength={5}
           pattern="\d{5}"
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Zipcode</label>
       </div>
@@ -186,7 +191,7 @@ function Client(props: ClientProps) {
           name="district"
           value={client.district}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">District</label>
       </div>
@@ -197,7 +202,7 @@ function Client(props: ClientProps) {
           placeholder=""
           value={client.phoneNumber}
           onChange={handlePhoneChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
       </div>
 
@@ -210,7 +215,7 @@ function Client(props: ClientProps) {
           name="infoUrl"
           value={client.infoUrl}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Info URL</label>
       </div>
@@ -224,12 +229,10 @@ function Client(props: ClientProps) {
           name="comment"
           value={client.comment}
           onChange={handleChange}
-          disabled={!client.editable}
+          disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Comment</label>
       </div>
     </div>
   );
 }
-
-export default Client;
