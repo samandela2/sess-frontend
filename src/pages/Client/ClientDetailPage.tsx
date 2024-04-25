@@ -21,17 +21,12 @@ function ClientDetailPage() {
       const isFieldDefined = fieldValue !== undefined;
       const isValid = alphaRegex.test(fieldValue);
 
-      // Log information about the field and its validation status
       console.log(
         `Checking field: ${field}; Field value: '${fieldValue} ; Is defined: ${isFieldDefined} ; Passes regex: ${isValid}`
       );
-      // console.log(`Field value: '${fieldValue}'`);
-      // console.log(`Is defined: ${isFieldDefined}`);
-      // console.log(`Passes regex: ${isValid}\n`);
-
       return isFieldDefined && isValid;
     });
-    console.log("Overall result is: " + result);
+    // console.log("Overall result is: " + result);
     return result;
   };
 
