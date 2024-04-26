@@ -24,16 +24,22 @@ const NewTaskPage = () => {
         <Task {...task} />
       </section>
       <section className="actionSection">
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleCreate}
-        >
-          Create
-        </button>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button>
+        <div style={{ textAlign: "left" }}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleCreate}
+          >
+            Create
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
       </section>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Client, { ClientProps } from "../../components/Client_Component/Client";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import "./ClientDetail.css";
 
 function ClientDetailPage() {
   let { id } = useParams();

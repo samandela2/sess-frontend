@@ -37,19 +37,29 @@ const TaskPage = () => {
         {task.length > 0 && <Task {...task[0]} />}
       </section>
       <section className="actionSection">
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleModify}
-        >
-          Modify
-        </button>
-        <button type="button" className="btn btn-primary" onClick={handleSave}>
-          Save
-        </button>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button>
+        <div style={{ textAlign: "left" }}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleModify}
+          >
+            Modify
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleSave}
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
       </section>
     </div>
   );
