@@ -5,67 +5,48 @@ import { Client } from "../../types/Interface";
 import {
   initEmptyClient,
   allowFields,
-  validateStringFields,
+  validateData,
 } from "../../utils/clientHelper";
 
 export interface ClientFormProps {
-  onClientSubmit: (client: Client) => void;
   client: Client;
 }
 
-export default function ClientForm({
-  client,
-  onClientSubmit,
-}: ClientFormProps) {
+export default function ClientForm({ client }: ClientFormProps) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isEditable, setIsEditable] = useState(true);
-
   const [isValidData, setIsValidData] = useState<boolean>(true);
+  const [clientInfo, setClientInfo] = useState<Client>(client);
 
   useEffect(() => {
-    setClient((prevState) => ({
-      ...prevState,
-    }));
-  }, [isEditable]);
-
-  const validateData = (client: {
-    firstName?: string;
-    lastName?: string;
-    gender?: string;
-    ethnicity?: string;
-    language?: string;
-    zipcode?: string;
-  }) => {
-    const isValidClient = validateStringFields(client, [
-      "firstName",
-      "lastName",
-      "gender",
-      "ethnicity",
-      "language",
-    ]);
-
-    setIsValidData(isValidClient);
-    console.log("isValidClient: " + isValidClient);
-  };
+    setClientInfo(client);
+  }, [client]);
 
   const handlePhoneChange = (value: string) => {
     setPhoneNumber(value);
-    setClient((prevState) => ({
-      ...prevState,
-      phoneNumber: value,
-    }));
+    setClientInfo((prevInfo) => ({ ...prevInfo, phoneNumber: value }));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     if (allowFields.includes(name)) {
-      setClient((prevClient) => ({
-        ...prevClient,
-        [name]: value,
-      }));
-      // console.log([name] + " : " + value);
+      setClientInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
+      console.log([name] + " : " + value);
     }
   };
+
+  const handleModify: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    const isValid = validateData(clientInfo);
+    setIsValidData(isValid);
+    if (isValidData) {
+      console.log("Client data is valid");
+    } else {
+      console.log("Client data is invalid");
+    }
+  };
+
+  const handleSave: React.MouseEventHandler<HTMLButtonElement> = (event) => {};
 
   return (
     <div>
@@ -75,7 +56,7 @@ export default function ClientForm({
           className="form-control"
           id="floatingInputDisabled"
           name="firstName"
-          value={client.firstName}
+          value={clientInfo.firstName}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -89,7 +70,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="lastName"
-          value={client.lastName}
+          value={clientInfo.lastName}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -103,7 +84,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="gender"
-          value={client.gender}
+          value={clientInfo.gender}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -117,7 +98,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="ethnicity"
-          value={client.ethnicity}
+          value={clientInfo.ethnicity}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -131,7 +112,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="dateOfBirth"
-          value={client.dateOfBirth}
+          value={clientInfo.dateOfBirth}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -145,7 +126,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="address"
-          value={client.address}
+          value={clientInfo.address}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -159,7 +140,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="language"
-          value={client.language}
+          value={clientInfo.language}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -173,7 +154,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="zipcode"
-          value={client.zipcode}
+          value={clientInfo.zipcode}
           maxLength={5}
           pattern="\d{5}"
           onChange={handleChange}
@@ -189,7 +170,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="district"
-          value={client.district}
+          value={clientInfo.district}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -200,7 +181,7 @@ export default function ClientForm({
         <PhoneInput
           country={"us"}
           placeholder=""
-          value={client.phoneNumber}
+          value={clientInfo.phoneNumber}
           onChange={handlePhoneChange}
           disabled={!isEditable}
         />
@@ -213,7 +194,7 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="infoUrl"
-          value={client.infoUrl}
+          value={clientInfo.infoUrl}
           onChange={handleChange}
           disabled={!isEditable}
         />
@@ -227,12 +208,28 @@ export default function ClientForm({
           id="floatingInputDisabled"
           placeholder=""
           name="comment"
-          value={client.comment}
+          value={clientInfo.comment ? clientInfo.comment : ""}
           onChange={handleChange}
           disabled={!isEditable}
         />
         <label htmlFor="floatingInputDisabled">Comment</label>
       </div>
+
+      <section className="actionSection">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleModify}
+        >
+          Modify
+        </button>
+        <button type="button" className="btn btn-primary" onClick={handleSave}>
+          Save
+        </button>
+        <button type="button" className="btn btn-danger">
+          Delete
+        </button>
+      </section>
     </div>
   );
 }

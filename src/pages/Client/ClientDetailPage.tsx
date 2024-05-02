@@ -4,63 +4,46 @@ import ClientForm, {
 } from "../../components/Client_Component/ClientForm";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Client } from "../../types/Interface";
+import { initEmptyClient } from "../../utils/clientHelper";
 
 function ClientDetailPage() {
-  let { id } = useParams();
+  // let { id } = useParams();
 
-  const [clientForm, setClientForm] = useState<ClientFormProps | null>(null);
+  const [client, setClient] = useState<Client>(initEmptyClient());
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/clientData.json")
       .then((response) => response.json())
-      .then((data) => setClientForm(data))
+      .then((data) => setClient(data))
       .catch((error) => console.error("Error fetching Client data", error));
   }, []);
 
   const handleSubmit = () => {};
 
   const handleDelete = () => {
-    console.log("Deleting Client:", clientForm);
-    setClientForm(null);
+    console.log("Deleting Client:", client);
+    setClient(initEmptyClient());
     navigate("/clients/search");
   };
 
-  useEffect(() => {
-    if (clientForm) {
-      console.log("Client is now editable:", clientForm.isEditable);
-      setClientForm({ ...clientForm });
-    }
-  }, [clientForm?.isEditable]);
+  // useEffect(() => {
+  //   if (clientForm) {
+  //     console.log("Client is now editable:", clientForm.isEditable);
+  //     setClientForm({ ...clientForm });
+  //   }
+  // }, [clientForm?.isEditable]);
 
-  if (!clientForm) {
-    return <div>Loading Client...</div>;
-  }
+  // if (!clientForm) {
+  //   return <div>Loading Client...</div>;
+  // }
 
   return (
     <div>
       <section className="clientInfo">
         <h2>Client</h2>
-        {clientForm && <ClientForm {...clientForm} />}
-      </section>
-      <section className="actionSection">
-        <button
-          type="button"
-          className="btn btn-primary"
-          // onClick={() => clientForm.(true)}
-        >
-          Modify
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleSubmit}
-        >
-          Save
-        </button>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button>
+        <ClientForm client={client} />
       </section>
     </div>
   );
