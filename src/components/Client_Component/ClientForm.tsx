@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PhoneInput, { PhoneInputProps } from "react-phone-input-2";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./ClientForm.css";
 import { Client } from "../../types/Interface";
 import {
@@ -10,11 +12,19 @@ import {
 
 export interface ClientFormProps {
   client: Client;
+  isNewClient: boolean;
+  handleDelete: () => void;
+  handleSubmit: () => void;
 }
 
-export default function ClientForm({ client }: ClientFormProps) {
+export default function ClientForm({
+  client,
+  isNewClient,
+  handleDelete,
+  handleSubmit,
+}: ClientFormProps) {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [isEditable, setIsEditable] = useState(true);
+  const [isEditable, setIsEditable] = useState(isNewClient);
   const [isValidData, setIsValidData] = useState<boolean>(true);
   const [clientInfo, setClientInfo] = useState<Client>(client);
 
@@ -36,20 +46,11 @@ export default function ClientForm({ client }: ClientFormProps) {
   };
 
   const handleModify: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.preventDefault();
-    const isValid = validateData(clientInfo);
-    setIsValidData(isValid);
-    if (isValidData) {
-      console.log("Client data is valid");
-    } else {
-      console.log("Client data is invalid");
-    }
+    setIsEditable(true);
   };
 
-  const handleSave: React.MouseEventHandler<HTMLButtonElement> = (event) => {};
-
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="form-floating mb-3">
         <input
           type="text"
@@ -220,16 +221,18 @@ export default function ClientForm({ client }: ClientFormProps) {
           type="button"
           className="btn btn-primary"
           onClick={handleModify}
+          hidden={isNewClient}
         >
           Modify
         </button>
-        <button type="button" className="btn btn-primary" onClick={handleSave}>
+
+        <button type="submit" className="btn btn-primary">
           Save
         </button>
-        <button type="button" className="btn btn-danger">
+        <button type="button" className="btn btn-danger" onClick={handleDelete}>
           Delete
         </button>
       </section>
-    </div>
+    </form>
   );
 }

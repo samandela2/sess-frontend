@@ -14,7 +14,7 @@ import Logoff from "./components/Auth_Component/Logoff";
 
 import ClientDetailPage from "./pages/Client/ClientDetailPage";
 import TaskDetailPage from "./pages/Task/TaskDetailPage";
-import AppointmentSlotPage from "./pages/Task/NewTaskPage";
+// import AppointmentSlotPage from "./pages/Task/NewTaskPage";
 import Register from "./pages/User/Register";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/profile" element={<Profilepage />} />
         <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/task" element={<TaskDetailPage />} />
-        <Route path="/appointment-slot" element={<AppointmentSlotPage />} />
+        {/* <Route path="/appointment-slot" element={<AppointmentSlotPage />} /> */}
         <Route path="/clients/search" element={<ClientSearchPage />} />
         <Route path="/clients/:id" element={<ClientDetailPage />} />
         <Route path="/logoff" element={<Logoff />} />

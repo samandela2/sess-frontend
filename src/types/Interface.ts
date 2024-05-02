@@ -16,3 +16,14 @@ export interface Client {
     comment?: string;
   }
   
+
+  export interface Task {
+    taskId: number;
+    startTime: string;
+    endTime: string;
+    location: string;
+    type: string;
+    clientId?: number | string;
+    ownerId: number;
+    comment?: string ;
+  }

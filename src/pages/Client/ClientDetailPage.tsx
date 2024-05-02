@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Client } from "../../types/Interface";
 import { initEmptyClient } from "../../utils/clientHelper";
+import ClientSearchPage from "./ClientSearchPage";
 
 function ClientDetailPage() {
   // let { id } = useParams();
@@ -20,14 +21,6 @@ function ClientDetailPage() {
       .catch((error) => console.error("Error fetching Client data", error));
   }, []);
 
-  const handleSubmit = () => {};
-
-  const handleDelete = () => {
-    console.log("Deleting Client:", client);
-    setClient(initEmptyClient());
-    navigate("/clients/search");
-  };
-
   // useEffect(() => {
   //   if (clientForm) {
   //     console.log("Client is now editable:", clientForm.isEditable);
@@ -39,11 +32,22 @@ function ClientDetailPage() {
   //   return <div>Loading Client...</div>;
   // }
 
+  const handleDelete = () => {
+    navigate("/clients/search");
+  };
+
+  const handleSubmit = () => {};
+
   return (
     <div>
       <section className="clientInfo">
         <h2>Client</h2>
-        <ClientForm client={client} />
+        <ClientForm
+          client={client}
+          isNewClient={false}
+          handleDelete={handleDelete}
+          handleSubmit={handleSubmit}
+        />
       </section>
     </div>
   );

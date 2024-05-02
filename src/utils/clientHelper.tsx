@@ -84,5 +84,4 @@ export const validateData = (client: {
     validatePhone(client.phoneNumber);
 
   return isValidClient;
-  console.log("isValidClient: " + isValidClient);
 };
