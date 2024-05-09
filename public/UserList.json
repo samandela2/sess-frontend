@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "username": "John Doe",
+      "role": "User"
+    },
+
+    {
+        "id": 2,
+        "username": "Jane Doe",
+        "role": "User"
+      },
+
+      {
+        "id": 3,
+        "username": "Kyle Doe",
+        "role": "User"
+      },
+
+      {
+        "id": 4,
+        "username": "GoGo kwong",
+        "role": "User"
+      },
+
+      {
+        "id": 5,
+        "username": "Kwong GoGo",
+        "role": "User"
+      },
+
+      {
+        "id": 6,
+        "username": "Daniel Doe",
+        "role": "User"},
+      {
+        "id": 7,
+        "username": "Amy Wu",
+        "role": "User"
+      },
+      {
+        "id": 30,
+        "username": "Rainbow",
+        "role": "User"
+      },
+      {
+        "id": 31,
+        "username": "Sunny",
+        "role": "User"
+      }
+     
+  ]
+  
