@@ -4,6 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
 import { UserProps } from "../User_Component/User";
 import { Task } from "../../types/Interface";
+import { EventClickArg } from "@fullcalendar/core";
 
 const userListUrl = "/UserList.json";
 const taskonSingleDayUrl = "/taskSingleDay.json";
@@ -27,7 +28,7 @@ const fetchTaskList = async (): Promise<Task[]> => {
   const response = await fetch(taskonSingleDayUrl);
   const data = await response.json();
   return data.map((TaskBasic: any) => ({
-    id: TaskBasic.taskId,
+    taskId: TaskBasic.taskId,
     clientId: TaskBasic.clientId,
     startTime: TaskBasic.startTime,
     endTime: TaskBasic.endTime,
@@ -63,7 +64,14 @@ export default function TaskCalendar() {
     loadTasks();
   }, []);
 
-  const addEvent = () => {};
+  const addEvent = () => {
+    alert("add event");
+  };
+
+  const handleEventClick = (arg: EventClickArg) => {
+    alert("Event: " + arg.event.title);
+    alert("Task ID: " + arg.event.id);
+  };
 
   return (
     <div>
@@ -77,11 +85,13 @@ export default function TaskCalendar() {
           title: user.username,
         }))}
         events={tasks.map((task) => ({
+          id: task.taskId.toString(),
           title: task.clientId?.toString(),
           start: toISODate(task.startTime),
           end: toISODate(task.endTime),
           resourceId: task.ownerId.toString(),
         }))}
+        eventClick={handleEventClick}
         slotMinTime={"08:00:00"}
         slotMaxTime={"18:00:00"}
         expandRows={true}

@@ -29,8 +29,11 @@ const NavigationBar = () => {
           <LinkContainer to="/clients/50">
             <Nav.Link>Client Details</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/appointment-slot">
+          <LinkContainer to="/newTask">
             <Nav.Link>Appointment Slot </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/newClient">
+            <Nav.Link>New Client </Nav.Link>
           </LinkContainer>
         </Nav>
 

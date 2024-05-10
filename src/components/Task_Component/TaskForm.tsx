@@ -170,32 +170,3 @@ export default function TaskForm({
     </form>
   );
 }
-
-//   <form onSubmit={handleSubmit}>
-
-//   </form>
-
-// <div className="Task">
-//   <p>
-//     <strong>Start Time:</strong> {startTime}
-//   </p>
-//   <p>
-//     <strong>End Time:</strong> {endTime}
-//   </p>
-//   <p>
-//     <strong>Location:</strong> {location}
-//   </p>
-//   <p>
-//     <strong>Type:</strong> {type}
-//   </p>
-//   <p>
-//     <strong>client ID:</strong> {clientId}
-//   </p>
-//   <p>
-//     <strong>Owner ID:</strong> {ownerId}
-//   </p>
-
-//   <p>
-//     <strong>Comment:</strong> {comment}
-//   </p>
-// </div>

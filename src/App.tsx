@@ -16,6 +16,8 @@ import ClientDetailPage from "./pages/Client/ClientDetailPage";
 import TaskDetailPage from "./pages/Task/TaskDetailPage";
 // import AppointmentSlotPage from "./pages/Task/NewTaskPage";
 import Register from "./pages/User/Register";
+import NewTaskDetailPage from "./pages/Task/NewTaskDetailPage";
+import NewClientDetailPage from "./pages/Client/NewClientDetailPage";
 
 function App() {
   return (
@@ -27,9 +29,10 @@ function App() {
         <Route path="/profile" element={<Profilepage />} />
         <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/task" element={<TaskDetailPage />} />
-        {/* <Route path="/appointment-slot" element={<AppointmentSlotPage />} /> */}
+        <Route path="/newTask" element={<NewTaskDetailPage />} />
         <Route path="/clients/search" element={<ClientSearchPage />} />
         <Route path="/clients/:id" element={<ClientDetailPage />} />
+        <Route path="/newClient" element={<NewClientDetailPage />} />
         <Route path="/logoff" element={<Logoff />} />
         <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>

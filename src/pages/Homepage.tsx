@@ -95,7 +95,7 @@ const Homepage = () => {
             </Alert>
           )}
 
-          <Link to="/appointment-slot" className="btn btn-primary my-2">
+          <Link to="/newTask" className="btn btn-primary my-2">
             Create Appointment
           </Link>
         </section>

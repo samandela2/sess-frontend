@@ -9,6 +9,7 @@ import {
   allowFields,
   validateData,
 } from "../../utils/clientHelper";
+import { ex } from "@fullcalendar/core/internal-common";
 
 export interface ClientFormProps {
   client: Client;
@@ -16,6 +17,24 @@ export interface ClientFormProps {
   handleDelete: () => void;
   handleSubmit: () => void;
 }
+
+export const initNewClient = (): Client => {
+  return {
+    clientId: 0,
+    firstName: "",
+    lastName: "",
+    gender: "",
+    ethnicity: "",
+    dateOfBirth: "",
+    address: "",
+    language: "",
+    zipcode: "",
+    district: 0,
+    phoneNumber: "",
+    infoUrl: "",
+    comment: undefined,
+  };
+};
 
 export default function ClientForm({
   client,
