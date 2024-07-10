@@ -1,10 +1,12 @@
-export interface UserBasicProps {
-  id: number;
-  username: string;
-  role: string;
-}
+// export interface UserBasicProps {
+//   id: number;
+//   username: string;
+//   role: string;
+// }
 
-const UserBasic = ({ id, username, role }: UserBasicProps) => {
+import { UserProps } from "../../types/Interface";
+
+const UserBasic = ({ id, username, role }: UserProps) => {
   return (
     <div className="TaskBasic">
       <p>
@@ -13,7 +15,7 @@ const UserBasic = ({ id, username, role }: UserBasicProps) => {
       </p>
       <p>
         <strong>role:</strong>
-        {" " + role}
+        {" " + (role == "ROLE_ADMIN" ? "ADMIN" : "USER")}
       </p>
     </div>
   );

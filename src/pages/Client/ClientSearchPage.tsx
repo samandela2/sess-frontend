@@ -1,5 +1,6 @@
+import { aW } from "@fullcalendar/core/internal-common";
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, ListGroup, Container } from "react-bootstrap";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -15,6 +16,7 @@ const ClientSearchPage = () => {
     phoneNumber?: string;
   }) => {
     console.log("Searching with these params:", searchParams);
+    // await fetch("/clientData.json/search")
     return [];
   };
 
@@ -62,6 +64,22 @@ const ClientSearchPage = () => {
           Search
         </Button>
       </Form>
+      <Container>
+        <ListGroup>
+          <ListGroup.Item onClick={() => console.log(" ")}>
+            <h5> client1</h5>
+          </ListGroup.Item>
+          <ListGroup.Item onClick={() => console.log(" ")}>
+            <h5> client2</h5>
+          </ListGroup.Item>
+          <ListGroup.Item onClick={() => console.log(" ")}>
+            <h5> client3</h5>
+          </ListGroup.Item>
+          <ListGroup.Item onClick={() => console.log(" ")}>
+            <h5> client4</h5>
+          </ListGroup.Item>
+        </ListGroup>
+      </Container>
     </div>
   );
 };

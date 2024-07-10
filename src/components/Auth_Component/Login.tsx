@@ -1,18 +1,17 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { Container, Form, Button } from "react-bootstrap";
 import "./Login.css";
 
-function Login() {
+const Login = () => {
+  console.log("Login component rendered");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault(); // Prevent the form from being submitted to the server traditionally
-
     login(username, password);
   };
 
@@ -23,9 +22,7 @@ function Login() {
     >
       <div className="text-center mb-4">
         <h1 className="login-title">SESS</h1>{" "}
-        {/* Custom class for styling the title */}
         <p className="login-message">Welcome to SESS</p>{" "}
-        {/* Custom class for the message */}
       </div>
 
       <div
@@ -67,6 +64,6 @@ function Login() {
       </div>
     </Container>
   );
-}
+};
 
 export default Login;

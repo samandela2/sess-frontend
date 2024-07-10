@@ -1,16 +1,16 @@
 import "./Task.css";
-import { Task } from "../../types/Interface";
+import { TaskProps } from "../../types/Interface";
 import { useEffect, useState } from "react";
 import "./TaskForm.css";
 
 export interface TaskFormProps {
-  task: Task;
+  task: TaskProps;
   isNewTask: boolean;
   handleDelete: () => void;
   handleSubmit: () => void;
 }
 
-export const initNewTask = (): Task => {
+export const initNewTask = (): TaskProps => {
   return {
     taskId: 0,
     startTime: "",
@@ -29,9 +29,8 @@ export default function TaskForm({
   handleDelete,
   handleSubmit,
 }: TaskFormProps) {
-  const [taskInfo, setTaskInfo] = useState<Task>(task);
+  const [taskInfo, setTaskInfo] = useState<TaskProps>(task);
   const [isEditable, setIsEditable] = useState(isNewTask);
-
   useEffect(() => {
     setTaskInfo(task);
   }, [task]);

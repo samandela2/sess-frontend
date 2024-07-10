@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
-import { UserProps } from "../User_Component/User";
-import { Task } from "../../types/Interface";
+import User from "../User_Component/User";
+import { TaskProps, UserProps } from "../../types/Interface";
 import { EventClickArg } from "@fullcalendar/core";
 
 const userListUrl = "/UserList.json";
@@ -24,7 +24,7 @@ const fetchUserList = async (): Promise<UserProps[]> => {
   }));
 };
 
-const fetchTaskList = async (): Promise<Task[]> => {
+const fetchTaskList = async (): Promise<TaskProps[]> => {
   const response = await fetch(taskonSingleDayUrl);
   const data = await response.json();
   return data.map((TaskBasic: any) => ({
@@ -40,7 +40,7 @@ const fetchTaskList = async (): Promise<Task[]> => {
 
 export default function TaskCalendar() {
   const [resources, setResources] = useState<UserProps[]>([]);
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
 
   const toISODate = (dateTimeStr: string): string => {
     if (dateTimeStr.length < 19) {

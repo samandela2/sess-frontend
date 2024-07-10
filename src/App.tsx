@@ -28,11 +28,11 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/profile" element={<Profilepage />} />
         <Route path="/schedule" element={<SchedulePage />} />
-        <Route path="/task" element={<TaskDetailPage />} />
-        <Route path="/newTask" element={<NewTaskDetailPage />} />
+        <Route path="/tasks/:id" element={<TaskDetailPage />} />
+        <Route path="/tasks" element={<NewTaskDetailPage />} />
         <Route path="/clients/search" element={<ClientSearchPage />} />
         <Route path="/clients/:id" element={<ClientDetailPage />} />
-        <Route path="/newClient" element={<NewClientDetailPage />} />
+        <Route path="/clients" element={<NewClientDetailPage />} />
         <Route path="/logoff" element={<Logoff />} />
         <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>

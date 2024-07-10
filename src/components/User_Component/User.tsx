@@ -1,16 +1,7 @@
-import React from "react";
 import "./User.css";
+import { UserProps } from "../../types/Interface";
 
-export interface UserProps {
-  id: number;
-  username: string;
-  role: string;
-  name: string;
-  email: string;
-  phone: string;
-}
-
-const User = ({ id, username, role, name, email, phone }: UserProps) => {
+const User = ({ id, username, role, email }: UserProps) => {
   return (
     <div className="User-floating">
       <p>
@@ -25,18 +16,18 @@ const User = ({ id, username, role, name, email, phone }: UserProps) => {
         <strong>Role:</strong>
         {" " + role}
       </p>
-      <p>
+      {/* <p>
         <strong>Name:</strong>
         {" " + name}
-      </p>
+      </p> */}
       <p>
         <strong>Email:</strong>
         {" " + email}
       </p>
-      <p>
+      {/* <p>
         <strong>Phone number:</strong>
         {" " + phone}
-      </p>
+      </p> */}
     </div>
   );
 };

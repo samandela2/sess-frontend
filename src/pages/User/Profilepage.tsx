@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import User, { UserProps } from "../../components/User_Component/User";
+import User from "../../components/User_Component/User";
+import { UserProps } from "../../types/Interface";
 
 const UserPage = () => {
   const [user, setUser] = useState<UserProps[]>([]);

@@ -3,37 +3,51 @@ import { Link } from "react-router-dom";
 import "./Homepage.css";
 import Alert from "../components/Alert";
 
-import UserBasic, {
-  UserBasicProps,
-} from "../components/User_Component/UserBasic";
-import TaskBasic, {
-  TaskBasicProps,
-} from "../components/Task_Component/TaskBasic";
+import UserBasic from "../components/User_Component/UserBasic";
+import TaskBasic from "../components/Task_Component/TaskBasic";
 
 import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "react-bootstrap";
+import { endpoints } from "../services/api";
+import { fetchWithToken } from "../utils/helper";
+import { TaskProps, UserProps } from "../types/Interface";
 
 const Homepage = () => {
-  const [userBasic, setUserBasic] = useState<UserBasicProps[]>([]);
-  const [taskBasics, setTaskBasics] = useState<TaskBasicProps[]>([]);
+  const [user, setUser] = useState<UserProps>();
+  const [taskBasics, setTaskBasics] = useState<TaskProps[]>([]);
   const adminDataUrl = "/adminUserData.json";
   const normalUserDataUrl = "/normalUserData.json";
   const taskBasicsUrl = "/taskData.json";
 
+  // useEffect(() => {
+  //   fetch(adminDataUrl)
+  //     // fetch("/normalUserData.json") // Uncomment to fetch data for normal users
+  //     .then((response) => response.json())
+  //     .then((data) => setUserBasic(data))
+  //     .catch((error) => console.error("Fetching user data fail", error));
+  // }, []);
+
   useEffect(() => {
-    fetch(adminDataUrl)
-      // fetch("/normalUserData.json") // Uncomment to fetch data for normal users
-      .then((response) => response.json())
-      .then((data) => setUserBasic(data))
+    fetchWithToken(endpoints.home)
+      .then((response) => {
+        console.log("response", response);
+        return response?.json();
+      })
+      .then((data) => {
+        console.log("data", data);
+        setUser(data.user);
+        setTaskBasics(data.tasks);
+        console.log("user", user);
+      })
       .catch((error) => console.error("Fetching user data fail", error));
   }, []);
 
-  useEffect(() => {
-    fetch(taskBasicsUrl)
-      .then((response) => response.json())
-      .then((data) => setTaskBasics(data))
-      .catch((error) => console.error("Fetching tasks basic data fail", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(taskBasicsUrl)
+  //     .then((response) => response.json())
+  //     .then((data) => setTaskBasics(data))
+  //     .catch((error) => console.error("Fetching tasks basic data fail", error));
+  // }, []);
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -46,15 +60,15 @@ const Homepage = () => {
     <div>
       <section className="profileBasic">
         <h2>Profile</h2>
-        {userBasic.length > 0 && <UserBasic {...userBasic[0]} />}
+        {user && <UserBasic {...user} />}
       </section>
 
       <section className="scheduleBasic">
         <h2>My Schedule</h2>
         <ul>
-          {taskBasics.map((taskBasics) => (
+          {/* {taskBasics.map((taskBasics) => (
             <TaskBasic key={taskBasics.taskId} {...taskBasics} />
-          ))}
+          ))} */}
         </ul>
       </section>
 
@@ -66,8 +80,7 @@ const Homepage = () => {
         </LinkContainer>
       </section>
 
-      {/* Admin specific section */}
-      {userBasic.length > 0 && userBasic[0].role === "ADMIN" && (
+      {user && user.role === "ROLE_ADMIN" && (
         <section className="admin-actions">
           <h2>Admin Actions</h2>
           {/* <div className="input-group mb-3 custom-search-group">

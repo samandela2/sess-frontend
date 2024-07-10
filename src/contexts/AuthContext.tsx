@@ -7,6 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { endpoints } from "../services/api";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -36,49 +37,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const setAuthState = (token: string) => {
+  const setAuthState = (token: string | null) => {
     if (token) {
       localStorage.setItem("token", token);
       setIsAuthenticated(true);
     } else {
       localStorage.removeItem("token");
       setIsAuthenticated(false);
+      navigate("/login");
     }
   };
 
   const login = async (username: string, password: string) => {
     console.log("Logging in... \nUsername:", username, "\nPassword:", password);
 
-    //TODO: Disable for now
-    // try {
-    // const response = await fetch("/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ username, password }),
-    // });
-    // console.log("Response:", response);
+    try {
+      const response = await fetch(endpoints.login, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      console.log("Response:", response);
 
-    // const token = response.headers.get("Authorization")?.split(" ")[1];
-    // console.log("token:", token);
-    // if (token) {
-    //     setAuthState(token);
-    //     navigate("/home");
-    //   } else {
-    //     throw new Error("No token returned");
-    //   }
-    // } catch (error) {
-    //   console.error("Login failed:", error);
-    //   logout();
-    // }
+      for (let [key, value] of response.headers.entries()) {
+        console.log(`${key}: ${value}`);
+      }
 
-    const token = "fakeToken";
-    setAuthState(token);
-    navigate("/home");
+      const token = response.headers.get("Authorization")?.split(" ")[1];
+      console.log("token:", token);
+      if (token) {
+        setAuthState(token);
+        navigate("/home");
+      } else {
+        alert("Login name or password invalid");
+        throw new Error("No token returned");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      logout();
+    }
+
+    // const token = "fakeToken";
+    // setAuthState(token);
   };
 
-  const logout = () => setAuthState("");
+  const logout = () => setAuthState(null);
 
   return (
     <AuthContext.Provider

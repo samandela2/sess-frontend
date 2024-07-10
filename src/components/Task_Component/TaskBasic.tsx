@@ -1,14 +1,15 @@
 import React from "react";
 import "./TaskBasic.css";
+import { TaskProps } from "../../types/Interface";
 
-export interface TaskBasicProps {
-  taskId: number;
-  startTime: string;
-  location: string;
-  type: string;
-}
+// export interface TaskBasicProps {
+//   taskId: number;
+//   startTime: string;
+//   location: string;
+//   type: string;
+// }
 
-const TaskBasic = ({ taskId, startTime, location, type }: TaskBasicProps) => {
+const TaskBasic = ({ taskId, startTime, location, type }: TaskProps) => {
   return (
     <div className="TaskBasic">
       <p>

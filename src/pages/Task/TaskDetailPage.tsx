@@ -3,12 +3,12 @@ import TaskForm, {
   TaskFormProps,
   initNewTask,
 } from "../../components/Task_Component/TaskForm";
-import Alert from "../../components/Alert";
+
 import { useNavigate } from "react-router-dom";
-import { Task } from "../../types/Interface";
+import { TaskProps } from "../../types/Interface";
 
 const TaskPage = () => {
-  const [task, setTask] = useState<Task>();
+  const [task, setTask] = useState<TaskProps>();
   const navigate = useNavigate();
 
   useEffect(() => {

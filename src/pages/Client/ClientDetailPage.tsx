@@ -4,14 +4,14 @@ import ClientForm, {
 } from "../../components/Client_Component/ClientForm";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Client } from "../../types/Interface";
+import { ClientProps } from "../../types/Interface";
 import { initEmptyClient } from "../../utils/clientHelper";
 import ClientSearchPage from "./ClientSearchPage";
 
 function ClientDetailPage() {
   // let { id } = useParams();
 
-  const [client, setClient] = useState<Client>(initEmptyClient());
+  const [client, setClient] = useState<ClientProps>(initEmptyClient());
   const navigate = useNavigate();
 
   useEffect(() => {

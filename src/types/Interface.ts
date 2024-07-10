@@ -1,6 +1,6 @@
 
 
-export interface Client {
+export interface ClientProps {
     clientId: number;
     firstName: string;
     lastName: string;
@@ -17,7 +17,7 @@ export interface Client {
   }
   
 
-  export interface Task {
+  export interface TaskProps {
     taskId: number;
     startTime: string;
     endTime: string;
@@ -25,5 +25,15 @@ export interface Client {
     type: string;
     clientId?: number | string;
     ownerId: number;
-    comment?: string ;
+    description?: string ;
+  }
+
+
+  export interface UserProps {
+  id: number;
+  username: string;
+  role: string;
+  admin: boolean;
+  email: string;
+  
   }
